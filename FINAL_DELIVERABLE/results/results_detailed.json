@@ -1,0 +1,370 @@
+{
+  "metadata": {
+    "evaluation_date": "2026-10-14 22:28:48",
+    "target": "AQI",
+    "test_sample_count": 11410,
+    "train_sample_count": 13214,
+    "random_seed": 42,
+    "hardware_platform": "win32"
+  },
+  "baselines": [
+    {
+      "Baseline": "Global Training Mean",
+      "Prediction_Rule": "Constant 190.01",
+      "RMSE": 130.3831,
+      "MAE": 102.6559,
+      "R2": -0.172
+    },
+    {
+      "Baseline": "City-Stratified Mean",
+      "Prediction_Rule": "City Training Mean (Fallback to Global)",
+      "RMSE": 107.2215,
+      "MAE": 78.4335,
+      "R2": 0.2074
+    }
+  ],
+  "experiment_1_pollutant_only": {
+    "features": [
+      "PM2.5",
+      "PM10",
+      "NO2",
+      "NH3",
+      "SO2",
+      "CO",
+      "O3",
+      "NO"
+    ],
+    "metrics": {
+      "Random Forest": {
+        "RMSE": 42.2185,
+        "MAE": 20.6647,
+        "R2": 0.8771,
+        "TrainTime_sec": 3.3308
+      },
+      "XGBoost": {
+        "RMSE": 42.5595,
+        "MAE": 20.4114,
+        "R2": 0.8751,
+        "TrainTime_sec": 0.4721
+      },
+      "LightGBM": {
+        "RMSE": 40.9889,
+        "MAE": 20.2186,
+        "R2": 0.8842,
+        "TrainTime_sec": 1.018
+      },
+      "CatBoost": {
+        "RMSE": 39.6688,
+        "MAE": 19.5689,
+        "R2": 0.8915,
+        "TrainTime_sec": 2.1501
+      }
+    },
+    "tuning": {
+      "Random Forest": {
+        "n_estimators": 200,
+        "selected_via": "fixed_standard"
+      },
+      "XGBoost": {
+        "best_iteration": 79,
+        "selected_via": "val_2018_early_stopping"
+      },
+      "LightGBM": {
+        "best_iteration": 117,
+        "selected_via": "val_2018_early_stopping"
+      },
+      "CatBoost": {
+        "best_iteration": 275,
+        "selected_via": "val_2018_early_stopping"
+      }
+    }
+  },
+  "experiment_2_city_aware": {
+    "features": [
+      "City",
+      "PM2.5",
+      "PM10",
+      "NO2",
+      "NH3",
+      "SO2",
+      "CO",
+      "O3",
+      "NO"
+    ],
+    "metrics": {
+      "Random Forest": {
+        "RMSE": 41.7839,
+        "MAE": 20.6991,
+        "R2": 0.8796,
+        "TrainTime_sec": 3.4597
+      },
+      "XGBoost": {
+        "RMSE": 42.0344,
+        "MAE": 19.9653,
+        "R2": 0.8782,
+        "TrainTime_sec": 0.4039
+      },
+      "LightGBM": {
+        "RMSE": 40.555,
+        "MAE": 20.1246,
+        "R2": 0.8866,
+        "TrainTime_sec": 0.9965
+      },
+      "CatBoost": {
+        "RMSE": 39.0882,
+        "MAE": 19.7629,
+        "R2": 0.8947,
+        "TrainTime_sec": 22.1213
+      }
+    },
+    "tuning": {
+      "Random Forest": {
+        "n_estimators": 200,
+        "city_encoding": "target_encoder_cv5"
+      },
+      "XGBoost": {
+        "best_iteration": 85,
+        "city_encoding": "target_encoder_cv5"
+      },
+      "LightGBM": {
+        "best_iteration": 104,
+        "city_encoding": "native_categorical"
+      },
+      "CatBoost": {
+        "best_iteration": 215,
+        "city_encoding": "native_ordered_boosting"
+      }
+    }
+  },
+  "statistical_inference_exp1": [
+    {
+      "Comparison": "CatBoost vs Random Forest",
+      "Delta_MAE": 1.0958,
+      "95%_CI_Delta_MAE": "[0.775, 1.427]",
+      "95%_CI_Delta_RMSE": "[0.465, 4.849]",
+      "Cohen_dz": 0.0633,
+      "Paired_t_p_adj": 0.0,
+      "Wilcoxon_p_adj": 5e-06,
+      "Daily_t_p_adj": 0.0,
+      "TOST_p": 0.0,
+      "Statistically_Equivalent": true
+    },
+    {
+      "Comparison": "CatBoost vs XGBoost",
+      "Delta_MAE": 0.8425,
+      "95%_CI_Delta_MAE": "[0.562, 1.131]",
+      "95%_CI_Delta_RMSE": "[0.798, 5.005]",
+      "Cohen_dz": 0.0554,
+      "Paired_t_p_adj": 0.0,
+      "Wilcoxon_p_adj": 0.0,
+      "Daily_t_p_adj": 0.0,
+      "TOST_p": 0.0,
+      "Statistically_Equivalent": true
+    },
+    {
+      "Comparison": "CatBoost vs LightGBM",
+      "Delta_MAE": 0.6497,
+      "95%_CI_Delta_MAE": "[0.347, 0.946]",
+      "95%_CI_Delta_RMSE": "[-0.787, 3.557]",
+      "Cohen_dz": 0.04,
+      "Paired_t_p_adj": 2e-05,
+      "Wilcoxon_p_adj": 3.7e-05,
+      "Daily_t_p_adj": 1.6e-05,
+      "TOST_p": 0.0,
+      "Statistically_Equivalent": true
+    }
+  ],
+  "tost_equivalence_exp1": [
+    {
+      "Comparison": "CatBoost vs Random Forest",
+      "Mean_Delta_MAE": 1.0958,
+      "Equivalence_Margin": "+/- 2.0 AQI points",
+      "TOST_p_value": 0.0,
+      "Equivalent_within_Margin": true
+    },
+    {
+      "Comparison": "CatBoost vs XGBoost",
+      "Mean_Delta_MAE": 0.8425,
+      "Equivalence_Margin": "+/- 2.0 AQI points",
+      "TOST_p_value": 0.0,
+      "Equivalent_within_Margin": true
+    },
+    {
+      "Comparison": "CatBoost vs LightGBM",
+      "Mean_Delta_MAE": 0.6497,
+      "Equivalence_Margin": "+/- 2.0 AQI points",
+      "TOST_p_value": 0.0,
+      "Equivalent_within_Margin": true
+    }
+  ],
+  "rolling_origin_cv": [
+    {
+      "Model": "Random Forest",
+      "Window_1_Train_2015_16_Eval_2017_RMSE": 56.1169,
+      "Window_1_Train_2015_16_Eval_2017_MAE": 31.3202,
+      "Window_2_Train_2015_17_Eval_2018_RMSE": 63.7841,
+      "Window_2_Train_2015_17_Eval_2018_MAE": 31.6678,
+      "Window_3_Train_2015_18_Eval_2019_20_RMSE": 42.2185,
+      "Window_3_Train_2015_18_Eval_2019_20_MAE": 20.6647
+    },
+    {
+      "Model": "XGBoost",
+      "Window_1_Train_2015_16_Eval_2017_RMSE": 57.9338,
+      "Window_1_Train_2015_16_Eval_2017_MAE": 31.1692,
+      "Window_2_Train_2015_17_Eval_2018_RMSE": 63.8972,
+      "Window_2_Train_2015_17_Eval_2018_MAE": 31.7247,
+      "Window_3_Train_2015_18_Eval_2019_20_RMSE": 42.5595,
+      "Window_3_Train_2015_18_Eval_2019_20_MAE": 20.4114
+    },
+    {
+      "Model": "LightGBM",
+      "Window_1_Train_2015_16_Eval_2017_RMSE": 50.7447,
+      "Window_1_Train_2015_16_Eval_2017_MAE": 29.8111,
+      "Window_2_Train_2015_17_Eval_2018_RMSE": 63.7473,
+      "Window_2_Train_2015_17_Eval_2018_MAE": 31.0198,
+      "Window_3_Train_2015_18_Eval_2019_20_RMSE": 40.9889,
+      "Window_3_Train_2015_18_Eval_2019_20_MAE": 20.2186
+    },
+    {
+      "Model": "CatBoost",
+      "Window_1_Train_2015_16_Eval_2017_RMSE": 48.9591,
+      "Window_1_Train_2015_16_Eval_2017_MAE": 28.6355,
+      "Window_2_Train_2015_17_Eval_2018_RMSE": 58.8201,
+      "Window_2_Train_2015_17_Eval_2018_MAE": 29.078,
+      "Window_3_Train_2015_18_Eval_2019_20_RMSE": 39.6688,
+      "Window_3_Train_2015_18_Eval_2019_20_MAE": 19.5689
+    }
+  ],
+  "year_wise_breakdown": [
+    {
+      "Year": 2019,
+      "Model": "Random Forest",
+      "Sample_Count": 7031,
+      "RMSE": 48.9092,
+      "MAE": 22.6229,
+      "R2": 0.8704
+    },
+    {
+      "Year": 2019,
+      "Model": "XGBoost",
+      "Sample_Count": 7031,
+      "RMSE": 49.4684,
+      "MAE": 22.1446,
+      "R2": 0.8674
+    },
+    {
+      "Year": 2019,
+      "Model": "LightGBM",
+      "Sample_Count": 7031,
+      "RMSE": 47.7494,
+      "MAE": 22.1354,
+      "R2": 0.8765
+    },
+    {
+      "Year": 2019,
+      "Model": "CatBoost",
+      "Sample_Count": 7031,
+      "RMSE": 45.4844,
+      "MAE": 21.458,
+      "R2": 0.8879
+    },
+    {
+      "Year": 2020,
+      "Model": "Random Forest",
+      "Sample_Count": 4379,
+      "RMSE": 28.345,
+      "MAE": 17.5206,
+      "R2": 0.8853
+    },
+    {
+      "Year": 2020,
+      "Model": "XGBoost",
+      "Sample_Count": 4379,
+      "RMSE": 28.1147,
+      "MAE": 17.6284,
+      "R2": 0.8872
+    },
+    {
+      "Year": 2020,
+      "Model": "LightGBM",
+      "Sample_Count": 4379,
+      "RMSE": 26.7743,
+      "MAE": 17.1408,
+      "R2": 0.8977
+    },
+    {
+      "Year": 2020,
+      "Model": "CatBoost",
+      "Sample_Count": 4379,
+      "RMSE": 27.9011,
+      "MAE": 16.5357,
+      "R2": 0.8889
+    }
+  ],
+  "spatial_breakdown": [
+    {
+      "Spatial_Cohort": "Seen Cities in Dev (18 cities)",
+      "Model": "Random Forest",
+      "Sample_Count": 9374,
+      "RMSE": 43.4884,
+      "MAE": 20.8403,
+      "R2": 0.8824
+    },
+    {
+      "Spatial_Cohort": "Seen Cities in Dev (18 cities)",
+      "Model": "XGBoost",
+      "Sample_Count": 9374,
+      "RMSE": 44.3802,
+      "MAE": 20.5965,
+      "R2": 0.8775
+    },
+    {
+      "Spatial_Cohort": "Seen Cities in Dev (18 cities)",
+      "Model": "LightGBM",
+      "Sample_Count": 9374,
+      "RMSE": 42.4396,
+      "MAE": 20.5632,
+      "R2": 0.888
+    },
+    {
+      "Spatial_Cohort": "Seen Cities in Dev (18 cities)",
+      "Model": "CatBoost",
+      "Sample_Count": 9374,
+      "RMSE": 41.5905,
+      "MAE": 20.0702,
+      "R2": 0.8924
+    },
+    {
+      "Spatial_Cohort": "Unseen Cities in Dev (8 cities)",
+      "Model": "Random Forest",
+      "Sample_Count": 2036,
+      "RMSE": 35.7952,
+      "MAE": 19.856,
+      "R2": 0.7615
+    },
+    {
+      "Spatial_Cohort": "Unseen Cities in Dev (8 cities)",
+      "Model": "XGBoost",
+      "Sample_Count": 2036,
+      "RMSE": 32.9015,
+      "MAE": 19.5587,
+      "R2": 0.7985
+    },
+    {
+      "Spatial_Cohort": "Unseen Cities in Dev (8 cities)",
+      "Model": "LightGBM",
+      "Sample_Count": 2036,
+      "RMSE": 33.5091,
+      "MAE": 18.6317,
+      "R2": 0.791
+    },
+    {
+      "Spatial_Cohort": "Unseen Cities in Dev (8 cities)",
+      "Model": "CatBoost",
+      "Sample_Count": 2036,
+      "RMSE": 29.2341,
+      "MAE": 17.2609,
+      "R2": 0.8409
+    }
+  ]
+}

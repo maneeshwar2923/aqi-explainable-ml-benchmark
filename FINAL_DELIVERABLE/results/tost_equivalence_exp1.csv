@@ -1,0 +1,4 @@
+Comparison,Mean_Delta_MAE,Equivalence_Margin,TOST_p_value,Equivalent_within_Margin
+CatBoost vs Random Forest,1.0958,+/- 2.0 AQI points,0.0,True
+CatBoost vs XGBoost,0.8425,+/- 2.0 AQI points,0.0,True
+CatBoost vs LightGBM,0.6497,+/- 2.0 AQI points,0.0,True

@@ -1,0 +1,10 @@
+Rank,Feature,Physical_Units,Mean_Abs_SHAP_Exp1,Relative_Attribution_Pct_Exp1,Mean_Abs_SHAP_Exp2,Relative_Attribution_Pct_Exp2,Primary_Atmospheric_Role
+1,PM2.5,ug/m3,50.8072,40.98%,51.8816,41.63%,Primary national index driver; fine aerosol fraction with deep pulmonary penetration
+2,CO,mg/m3,27.7623,22.39%,25.9241,20.80%,Incomplete combustion tracer from vehicular traffic and biomass burning
+3,PM10,ug/m3,20.9591,16.91%,17.5962,14.12%,Coarse inhalable particulate matter from road dust and construction debris
+4,NO,ug/m3,7.7998,6.29%,7.5252,6.04%,Primary combustion emissions rapidly reacting with ozone
+5,O3,ug/m3,6.2459,5.04%,5.3123,4.26%,Daylight secondary photochemical oxidant formed via NOx and VOCs
+6,NO2,ug/m3,4.2701,3.44%,4.6306,3.72%,Photochemical smog and secondary aerosol nitrate precursor
+7,SO2,ug/m3,3.7345,3.01%,3.5954,2.88%,Industrial coal and diesel refining combustion tracer
+8,NH3,ug/m3,2.3935,1.93%,0.5572,0.45%,Agricultural and livestock emissions neutralizing acidic aerosols
+4,City,Categorical,,N/A (Pollutant-Only),7.6091,6.11%,Geographical metropolitan baseline and regional airshed identity

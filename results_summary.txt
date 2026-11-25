@@ -1,0 +1,49 @@
+================================================================================
+REVISED BENCHMARKING RESULTS & STATISTICAL AUDIT REPORT
+================================================================================
+
+EXPERIMENT 1: POLLUTANT-ONLY BENCHMARK (Primary Controlled Comparison)
+Features: PM2.5, PM10, NO2, NH3, SO2, CO, O3, NO (Physical Units, Unclipped Target)
+                  RMSE      MAE      R2  TrainTime_sec
+Random Forest  42.2185  20.6647  0.8771         4.0797
+XGBoost        42.5595  20.4114  0.8751         0.2910
+LightGBM       40.9889  20.2186  0.8842         0.5682
+CatBoost       39.6688  19.5689  0.8915         1.6232
+
+--------------------------------------------------------------------------------
+EXPERIMENT 2: CITY-AWARE BENCHMARK (Criteria Pollutants + City)
+Features: City (Encoded) + 8 Pollutants
+                  RMSE      MAE      R2  TrainTime_sec
+Random Forest  41.7839  20.6991  0.8796         3.6423
+XGBoost        42.0344  19.9653  0.8782         0.3108
+LightGBM       40.5550  20.1246  0.8866         0.5885
+CatBoost       39.0882  19.7629  0.8947        19.9453
+
+--------------------------------------------------------------------------------
+STATISTICAL HYPOTHESIS TESTING (Primary Benchmark Best Model: CatBoost)
+                  Comparison  Delta_MAE 95%_CI_Delta_MAE 95%_CI_Delta_RMSE  Cohen_dz  Paired_t_p_adj  Wilcoxon_p_adj  Daily_t_p_adj  TOST_p  Statistically_Equivalent
+0  CatBoost vs Random Forest     1.0958   [0.775, 1.427]    [0.465, 4.849]    0.0633         0.00000        0.000005       0.000000     0.0                      True
+1        CatBoost vs XGBoost     0.8425   [0.562, 1.131]    [0.798, 5.005]    0.0554         0.00000        0.000000       0.000000     0.0                      True
+2       CatBoost vs LightGBM     0.6497   [0.347, 0.946]   [-0.787, 3.557]    0.0400         0.00002        0.000037       0.000016     0.0                      True
+
+METHODOLOGICAL INFERENCE NOTES:
+1. Observation-level paired t-test and Wilcoxon signed-rank tests test the null of equal error magnitude.
+2. Daily-aggregated paired t-test mitigates cross-city spatial correlation on identical calendar dates (T=548 days).
+3. Family-wise error rate is controlled via Holm-Bonferroni step-down correction across comparisons.
+4. Equivalence is tested via Two One-Sided Tests (TOST) against an equivalence boundary of +/- 2.0 AQI points.
+   NOTE: Failure to reject H0 in a standard difference test does NOT prove equivalence. Equivalence requires TOST rejection.
+
+--------------------------------------------------------------------------------
+SPATIAL GENERALIZATION: SEEN VS UNSEEN CITIES IN TEST SET
+Seen in Training (18 cities, N=9374) vs Unseen in Training (8 cities, N=2036):
+               Seen_Cities_RMSE  Unseen_Cities_RMSE
+Random Forest           43.4884             35.7952
+XGBoost                 44.3802             32.9015
+LightGBM                42.4396             33.5091
+CatBoost                41.5905             29.2341
+
+--------------------------------------------------------------------------------
+TEMPORAL ROLLING-ORIGIN CROSS-VALIDATION
+  Window 1 (Train 2015-16 -> Eval 2017): CatBoost RMSE = 48.9276
+  Window 2 (Train 2015-17 -> Eval 2018): CatBoost RMSE = 58.8591
+  Window 3 (Train 2015-18 -> Eval 2019-20): CatBoost RMSE = 39.6688

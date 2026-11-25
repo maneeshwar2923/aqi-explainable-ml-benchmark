@@ -1,0 +1,224 @@
+{
+  "metadata": {
+    "script": "01_preprocess.py",
+    "raw_file": "city_day.csv",
+    "raw_rows": 29531,
+    "raw_columns": 16,
+    "target_variable": "AQI",
+    "features": [
+      "PM2.5",
+      "PM10",
+      "NO2",
+      "NH3",
+      "SO2",
+      "CO",
+      "O3",
+      "NO"
+    ],
+    "metadata_columns": [
+      "City",
+      "Date"
+    ]
+  },
+  "cleaning_summary": {
+    "missing_target_dropped": 4681,
+    "sparse_rows_dropped_gt_40pct": 226,
+    "retained_valid_rows": 24624
+  },
+  "split_boundaries": {
+    "train_sub": {
+      "years": [
+        2015,
+        2017
+      ],
+      "rows": 7556,
+      "date_start": "2015-01-01",
+      "date_end": "2017-12-31"
+    },
+    "val": {
+      "years": [
+        2018,
+        2018
+      ],
+      "rows": 5658,
+      "date_start": "2018-01-01",
+      "date_end": "2018-12-31"
+    },
+    "train_full": {
+      "years": [
+        2015,
+        2018
+      ],
+      "rows": 13214,
+      "date_start": "2015-01-01",
+      "date_end": "2018-12-31"
+    },
+    "test": {
+      "years": [
+        2019,
+        2020
+      ],
+      "rows": 11410,
+      "date_start": "2019-01-01",
+      "date_end": "2020-07-01"
+    }
+  },
+  "spatial_coverage": {
+    "train_cities_count": 18,
+    "train_cities": [
+      "Ahmedabad",
+      "Amaravati",
+      "Amritsar",
+      "Bengaluru",
+      "Brajrajnagar",
+      "Chennai",
+      "Delhi",
+      "Gurugram",
+      "Hyderabad",
+      "Jaipur",
+      "Jorapokhar",
+      "Kolkata",
+      "Lucknow",
+      "Mumbai",
+      "Patna",
+      "Talcher",
+      "Thiruvananthapuram",
+      "Visakhapatnam"
+    ],
+    "test_cities_count": 26,
+    "test_cities": [
+      "Ahmedabad",
+      "Aizawl",
+      "Amaravati",
+      "Amritsar",
+      "Bengaluru",
+      "Bhopal",
+      "Brajrajnagar",
+      "Chandigarh",
+      "Chennai",
+      "Coimbatore",
+      "Delhi",
+      "Ernakulam",
+      "Gurugram",
+      "Guwahati",
+      "Hyderabad",
+      "Jaipur",
+      "Jorapokhar",
+      "Kochi",
+      "Kolkata",
+      "Lucknow",
+      "Mumbai",
+      "Patna",
+      "Shillong",
+      "Talcher",
+      "Thiruvananthapuram",
+      "Visakhapatnam"
+    ],
+    "unseen_test_cities_count": 8,
+    "unseen_test_cities": [
+      "Aizawl",
+      "Bhopal",
+      "Chandigarh",
+      "Coimbatore",
+      "Ernakulam",
+      "Guwahati",
+      "Kochi",
+      "Shillong"
+    ],
+    "unseen_test_rows": 2036,
+    "unseen_test_percentage": 17.84
+  },
+  "learned_parameters": {
+    "train_full_medians": {
+      "PM2.5": 57.845,
+      "PM10": 108.41,
+      "NO2": 25.36,
+      "NH3": 21.2,
+      "SO2": 8.44,
+      "CO": 1.02,
+      "O3": 31.3,
+      "NO": 10.21
+    },
+    "train_sub_medians": {
+      "PM2.5": 60.9,
+      "PM10": 107.82,
+      "NO2": 23.835,
+      "NH3": 26.375,
+      "SO2": 7.17,
+      "CO": 1.13,
+      "O3": 31.28,
+      "NO": 9.415
+    },
+    "outlier_audit_train_full": {
+      "PM2.5": {
+        "mean": 79.50624943242016,
+        "std": 71.58150582427474,
+        "upper_3sigma": 294.2507669052444,
+        "p99": 350.33669999999955,
+        "train_exceedances_3sigma": 245,
+        "test_exceedances_3sigma": 51
+      },
+      "PM10": {
+        "mean": 125.72356440139245,
+        "std": 77.71717932174553,
+        "upper_3sigma": 358.87510236662905,
+        "p99": 435.2261,
+        "train_exceedances_3sigma": 344,
+        "test_exceedances_3sigma": 143
+      },
+      "NO2": {
+        "mean": 31.781957015286817,
+        "std": 24.96288423738626,
+        "upper_3sigma": 106.6706097274456,
+        "p99": 120.03749999999974,
+        "train_exceedances_3sigma": 213,
+        "test_exceedances_3sigma": 165
+      },
+      "NH3": {
+        "mean": 26.473683214772212,
+        "std": 26.23182952612035,
+        "upper_3sigma": 105.16917179313326,
+        "p99": 145.43449999999964,
+        "train_exceedances_3sigma": 278,
+        "test_exceedances_3sigma": 24
+      },
+      "SO2": {
+        "mean": 14.039082034206144,
+        "std": 17.793886841495745,
+        "upper_3sigma": 67.42074255869338,
+        "p99": 102.20839999999967,
+        "train_exceedances_3sigma": 326,
+        "test_exceedances_3sigma": 207
+      },
+      "CO": {
+        "mean": 2.766463599212956,
+        "std": 8.03392867551221,
+        "upper_3sigma": 26.868249625749584,
+        "p99": 40.16539999999957,
+        "train_exceedances_3sigma": 272,
+        "test_exceedances_3sigma": 142
+      },
+      "O3": {
+        "mean": 35.72333434236416,
+        "std": 22.859381870595378,
+        "upper_3sigma": 104.3014799541503,
+        "p99": 112.65739999999998,
+        "train_exceedances_3sigma": 200,
+        "test_exceedances_3sigma": 59
+      },
+      "NO": {
+        "mean": 18.498268503102768,
+        "std": 23.815465142271197,
+        "upper_3sigma": 89.94466392991636,
+        "p99": 124.44919999999983,
+        "train_exceedances_3sigma": 341,
+        "test_exceedances_3sigma": 155
+      }
+    }
+  },
+  "policy": {
+    "target_capping": "None (unaltered observed AQI)",
+    "feature_scaling": "Raw physical concentration units (no scaling for tree invariance)",
+    "leakage_safeguard": "All preprocessing statistics fit strictly on training partitions"
+  }
+}

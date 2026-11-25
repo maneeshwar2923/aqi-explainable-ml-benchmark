@@ -1,0 +1,51 @@
+======================================================================
+REVISED PREPROCESSING PIPELINE: LEAKAGE-FREE URBAN AQI DATASET
+======================================================================
+Loaded raw data: 29531 rows, 16 columns from C:\Users\manee\OneDrive\Pictures\Documents\CHRIST\Research\final_analysis\city_day.csv
+Total unique cities in raw dataset: 26
+Dropped 4681 rows missing target 'AQI' (retained: 24850)
+Dropped 226 rows missing >40% of pollutant features (retained: 24624)
+Overall date range of retained observations: 2015-01-01 to 2020-07-01
+
+Chronological Split Breakdown:
+  - Training Subset (2015-2017): 7556 rows (2015-01-01 to 2017-12-31)
+  - Validation Set  (2018):      5658 rows (2018-01-01 to 2018-12-31)
+  - Full Train Set  (2015-2018): 13214 rows (2015-01-01 to 2018-12-31)
+  - Final Test Set  (2019-2020): 11410 rows (2019-01-01 to 2020-07-01)
+
+City Coverage Audit:
+  - Cities in Training set: 18 -> ['Ahmedabad', 'Amaravati', 'Amritsar', 'Bengaluru', 'Brajrajnagar', 'Chennai', 'Delhi', 'Gurugram', 'Hyderabad', 'Jaipur', 'Jorapokhar', 'Kolkata', 'Lucknow', 'Mumbai', 'Patna', 'Talcher', 'Thiruvananthapuram', 'Visakhapatnam']
+  - Cities in Test set:     26 -> ['Ahmedabad', 'Aizawl', 'Amaravati', 'Amritsar', 'Bengaluru', 'Bhopal', 'Brajrajnagar', 'Chandigarh', 'Chennai', 'Coimbatore', 'Delhi', 'Ernakulam', 'Gurugram', 'Guwahati', 'Hyderabad', 'Jaipur', 'Jorapokhar', 'Kochi', 'Kolkata', 'Lucknow', 'Mumbai', 'Patna', 'Shillong', 'Talcher', 'Thiruvananthapuram', 'Visakhapatnam']
+  - Unseen cities in Test:  8 -> ['Aizawl', 'Bhopal', 'Chandigarh', 'Coimbatore', 'Ernakulam', 'Guwahati', 'Kochi', 'Shillong']
+  - Unseen city observations in Test: 2036 / 11410 (17.84%)
+
+Missing Value Imputation (Train-only fitted statistics):
+  PM2.5  | TrainFull Miss:  460 | Test Miss:  148 | TrainFull Median:   57.845 | TrainSub Median:   60.900
+  PM10   | TrainFull Miss: 5633 | Test Miss: 1319 | TrainFull Median:  108.410 | TrainSub Median:  107.820
+  NO2    | TrainFull Miss:   30 | Test Miss:  138 | TrainFull Median:   25.360 | TrainSub Median:   23.835
+  NH3    | TrainFull Miss: 4673 | Test Miss: 1639 | TrainFull Median:   21.200 | TrainSub Median:   26.375
+  SO2    | TrainFull Miss:  293 | Test Miss:  201 | TrainFull Median:    8.440 | TrainSub Median:    7.170
+  CO     | TrainFull Miss:  133 | Test Miss:  255 | TrainFull Median:    1.020 | TrainSub Median:    1.130
+  O3     | TrainFull Miss:  428 | Test Miss:  244 | TrainFull Median:   31.300 | TrainSub Median:   31.280
+  NO     | TrainFull Miss:   76 | Test Miss:   86 | TrainFull Median:   10.210 | TrainSub Median:    9.415
+
+Outlier Threshold Audit (Training-only statistics, unclipped baseline retained):
+  PM2.5  | Mean=  79.51, Std=  71.58 | 3-Sigma Upper= 294.25 | P99= 350.34 | Train >3s: 245 | Test >3s:  51
+  PM10   | Mean= 125.72, Std=  77.72 | 3-Sigma Upper= 358.88 | P99= 435.23 | Train >3s: 344 | Test >3s: 143
+  NO2    | Mean=  31.78, Std=  24.96 | 3-Sigma Upper= 106.67 | P99= 120.04 | Train >3s: 213 | Test >3s: 165
+  NH3    | Mean=  26.47, Std=  26.23 | 3-Sigma Upper= 105.17 | P99= 145.43 | Train >3s: 278 | Test >3s:  24
+  SO2    | Mean=  14.04, Std=  17.79 | 3-Sigma Upper=  67.42 | P99= 102.21 | Train >3s: 326 | Test >3s: 207
+  CO     | Mean=   2.77, Std=   8.03 | 3-Sigma Upper=  26.87 | P99=  40.17 | Train >3s: 272 | Test >3s: 142
+  O3     | Mean=  35.72, Std=  22.86 | 3-Sigma Upper= 104.30 | P99= 112.66 | Train >3s: 200 | Test >3s:  59
+  NO     | Mean=  18.50, Std=  23.82 | 3-Sigma Upper=  89.94 | P99= 124.45 | Train >3s: 341 | Test >3s: 155
+  Target AQI summary: Train Mean=190.01, Std=153.03, Max=2049.0 | Test Max=1719.0
+  NOTE: Target AQI is NEVER clipped. Predictions will be evaluated against true ground-truth AQI.
+
+Serialized Datasets:
+  - train.csv     (Combined 2015-2018 dev set): (13214, 12)
+  - val.csv       (Chronological 2018 val set): (5658, 12)
+  - train_sub.csv (Chronological 2015-2017 set):(7556, 12)
+  - test.csv      (Final 2019-2020 test set):   (11410, 12)
+
+Machine-readable report saved to C:\Users\manee\OneDrive\Pictures\Documents\CHRIST\Research\final_analysis\preprocessing_report.json
+Preprocessing complete.

@@ -1,0 +1,54 @@
+================================================================================
+VERIFIED RESEARCH BENCHMARKING RESULTS & STATISTICAL AUDIT REPORT
+================================================================================
+
+1. BASELINE COMPARISON:
+            Baseline                         Prediction_Rule     RMSE      MAE      R2
+Global Training Mean                         Constant 190.01 130.3831 102.6559 -0.1720
+City-Stratified Mean City Training Mean (Fallback to Global) 107.2215  78.4335  0.2074
+
+2. EXPERIMENT 1: POLLUTANT-ONLY BENCHMARK (Primary Controlled Comparison)
+Features: PM2.5, PM10, NO2, NH3, SO2, CO, O3, NO (Unclipped Observed AQI)
+                  RMSE      MAE      R2  TrainTime_sec
+Random Forest  42.2185  20.6647  0.8771         3.3308
+XGBoost        42.5595  20.4114  0.8751         0.4721
+LightGBM       40.9889  20.2186  0.8842         1.0180
+CatBoost       39.6688  19.5689  0.8915         2.1501
+
+3. EXPERIMENT 2: CITY-AWARE BENCHMARK (Criteria Pollutants + City)
+Features: City (Encoded) + 8 Criteria Pollutants
+                  RMSE      MAE      R2  TrainTime_sec
+Random Forest  41.7839  20.6991  0.8796         3.4597
+XGBoost        42.0344  19.9653  0.8782         0.4039
+LightGBM       40.5550  20.1246  0.8866         0.9965
+CatBoost       39.0882  19.7629  0.8947        22.1213
+
+4. STATISTICAL HYPOTHESIS TESTING (Exp 1 vs Best Model: CatBoost)
+               Comparison  Delta_MAE 95%_CI_Delta_MAE 95%_CI_Delta_RMSE  Cohen_dz  Paired_t_p_adj  Wilcoxon_p_adj  Daily_t_p_adj  TOST_p  Statistically_Equivalent
+CatBoost vs Random Forest     1.0958   [0.775, 1.427]    [0.465, 4.849]    0.0633         0.00000        0.000005       0.000000     0.0                      True
+      CatBoost vs XGBoost     0.8425   [0.562, 1.131]    [0.798, 5.005]    0.0554         0.00000        0.000000       0.000000     0.0                      True
+     CatBoost vs LightGBM     0.6497   [0.347, 0.946]   [-0.787, 3.557]    0.0400         0.00002        0.000037       0.000016     0.0                      True
+
+5. TWO ONE-SIDED TESTS (TOST) EQUIVALENCE TESTING (+/- 2.0 AQI points)
+               Comparison  Mean_Delta_MAE Equivalence_Margin  TOST_p_value  Equivalent_within_Margin
+CatBoost vs Random Forest          1.0958 +/- 2.0 AQI points           0.0                      True
+      CatBoost vs XGBoost          0.8425 +/- 2.0 AQI points           0.0                      True
+     CatBoost vs LightGBM          0.6497 +/- 2.0 AQI points           0.0                      True
+
+6. TEMPORAL ROLLING-ORIGIN EXPANDING-WINDOW CROSS-VALIDATION
+        Model  Window_1_Train_2015_16_Eval_2017_RMSE  Window_1_Train_2015_16_Eval_2017_MAE  Window_2_Train_2015_17_Eval_2018_RMSE  Window_2_Train_2015_17_Eval_2018_MAE  Window_3_Train_2015_18_Eval_2019_20_RMSE  Window_3_Train_2015_18_Eval_2019_20_MAE
+Random Forest                                56.1169                               31.3202                                63.7841                               31.6678                                   42.2185                                  20.6647
+      XGBoost                                57.9338                               31.1692                                63.8972                               31.7247                                   42.5595                                  20.4114
+     LightGBM                                50.7447                               29.8111                                63.7473                               31.0198                                   40.9889                                  20.2186
+     CatBoost                                48.9591                               28.6355                                58.8201                               29.0780                                   39.6688                                  19.5689
+
+7. SPATIAL GENERALIZATION (Seen vs Unseen Cities)
+                 Spatial_Cohort         Model  Sample_Count    RMSE     MAE     R2
+ Seen Cities in Dev (18 cities) Random Forest          9374 43.4884 20.8403 0.8824
+ Seen Cities in Dev (18 cities)       XGBoost          9374 44.3802 20.5965 0.8775
+ Seen Cities in Dev (18 cities)      LightGBM          9374 42.4396 20.5632 0.8880
+ Seen Cities in Dev (18 cities)      CatBoost          9374 41.5905 20.0702 0.8924
+Unseen Cities in Dev (8 cities) Random Forest          2036 35.7952 19.8560 0.7615
+Unseen Cities in Dev (8 cities)       XGBoost          2036 32.9015 19.5587 0.7985
+Unseen Cities in Dev (8 cities)      LightGBM          2036 33.5091 18.6317 0.7910
+Unseen Cities in Dev (8 cities)      CatBoost          2036 29.2341 17.2609 0.8409

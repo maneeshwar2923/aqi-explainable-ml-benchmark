@@ -1,0 +1,11 @@
+Experiment,Model_Type,Model,Encoding_Strategy,RMSE,MAE,R2,TrainTime_sec,Test_Observations,Test_Period
+Baseline,Naive Heuristic,Global Training Mean,Constant (190.01),130.3831,102.6559,-0.172,0.0,11410,2019-01-01 to 2020-07-01
+Baseline,Spatial Heuristic,City-Stratified Mean,City Training Mean (Fallback to Global),107.2215,78.4335,0.2074,0.0,11410,2019-01-01 to 2020-07-01
+Exp 1: Pollutant-Only,Ensemble / Bagging,Random Forest,None (Physical Pollutants Only),42.2185,20.6647,0.8771,3.3308,11410,2019-01-01 to 2020-07-01
+Exp 1: Pollutant-Only,Gradient Boosted Trees,XGBoost,None (Physical Pollutants Only),42.5595,20.4114,0.8751,0.4721,11410,2019-01-01 to 2020-07-01
+Exp 1: Pollutant-Only,Gradient Boosted Trees,LightGBM,None (Physical Pollutants Only),40.9889,20.2186,0.8842,1.018,11410,2019-01-01 to 2020-07-01
+Exp 1: Pollutant-Only,Gradient Boosted Trees,CatBoost,None (Physical Pollutants Only),39.6688,19.5689,0.8915,2.1501,11410,2019-01-01 to 2020-07-01
+Exp 2: City-Aware,Ensemble / Bagging,Random Forest,TargetEncoder (5-fold CV),41.7839,20.6991,0.8796,3.4597,11410,2019-01-01 to 2020-07-01
+Exp 2: City-Aware,Gradient Boosted Trees,XGBoost,TargetEncoder (5-fold CV),42.0344,19.9653,0.8782,0.4039,11410,2019-01-01 to 2020-07-01
+Exp 2: City-Aware,Gradient Boosted Trees,LightGBM,Native Categorical,40.555,20.1246,0.8866,0.9965,11410,2019-01-01 to 2020-07-01
+Exp 2: City-Aware,Gradient Boosted Trees,CatBoost,Native Categorical,39.0882,19.7629,0.8947,22.1213,11410,2019-01-01 to 2020-07-01

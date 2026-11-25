@@ -1,0 +1,44 @@
+# Dependencies
+node_modules/
+.pnp
+.pnp.js
+
+# Next.js build output
+.next/
+out/
+build/
+dist/
+
+# Catboost info, caches, logs
+catboost_info/
+__pycache__/
+*.py[cod]
+*$py.class
+.pytest_cache/
+*.log
+
+# Large serialized machine learning model binaries (>100MB GitHub limit)
+*.pkl
+models_pollutant_only.pkl
+trained_models.pkl
+FINAL_DELIVERABLE/models/*.pkl
+NEW_ANALYSIS/models/*.pkl
+
+# Large zip packages (>50MB)
+FINAL_DELIVERABLE.zip
+
+# Nested duplicate folder created by archive extraction
+final_analysis/
+_backup_original/
+
+# OS and editor files
+.DS_Store
+Thumbs.db
+*.swp
+*.swo
+.vscode/
+.idea/
+
+# Environment variables
+.env*.local
+.env

@@ -1,0 +1,13 @@
+RESULTS TABLE
+                  RMSE      MAE      R2  TrainTime_sec
+Random Forest  32.7604  19.6408  0.9040         9.6534
+XGBoost        31.5151  18.7752  0.9112         0.7583
+LightGBM       32.4736  19.8176  0.9057         3.8271
+CatBoost       30.5820  18.3699  0.9163        34.6608
+
+SIGNIFICANCE TESTS (corrected resampled t-test)
+Best model: CatBoost
+
+CatBoost vs Random Forest: t=-0.0501, p=0.960061, significant at alpha=0.05: False
+CatBoost vs XGBoost: t=-0.0203, p=0.983778, significant at alpha=0.05: False
+CatBoost vs LightGBM: t=-0.0482, p=0.961567, significant at alpha=0.05: False

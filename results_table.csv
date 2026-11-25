@@ -1,0 +1,9 @@
+Model,RMSE,MAE,R2,TrainTime_sec,Experiment
+Random Forest,42.2185,20.6647,0.8771,4.0797,Exp 1: Pollutant-Only
+XGBoost,42.5595,20.4114,0.8751,0.291,Exp 1: Pollutant-Only
+LightGBM,40.9889,20.2186,0.8842,0.5682,Exp 1: Pollutant-Only
+CatBoost,39.6688,19.5689,0.8915,1.6232,Exp 1: Pollutant-Only
+Random Forest,41.7839,20.6991,0.8796,3.6423,Exp 2: City-Aware
+XGBoost,42.0344,19.9653,0.8782,0.3108,Exp 2: City-Aware
+LightGBM,40.555,20.1246,0.8866,0.5885,Exp 2: City-Aware
+CatBoost,39.0882,19.7629,0.8947,19.9453,Exp 2: City-Aware

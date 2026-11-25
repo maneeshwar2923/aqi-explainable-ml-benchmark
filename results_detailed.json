@@ -1,0 +1,312 @@
+{
+  "metadata": {
+    "evaluation_date": "2026-10-14 16:32:03",
+    "target": "AQI",
+    "test_sample_count": 11410,
+    "train_sample_count": 13214,
+    "random_seed": 42,
+    "hardware_platform": "win32"
+  },
+  "experiment_1_pollutant_only": {
+    "features": [
+      "PM2.5",
+      "PM10",
+      "NO2",
+      "NH3",
+      "SO2",
+      "CO",
+      "O3",
+      "NO"
+    ],
+    "metrics": {
+      "Random Forest": {
+        "RMSE": 42.2185,
+        "MAE": 20.6647,
+        "R2": 0.8771,
+        "TrainTime_sec": 4.0797
+      },
+      "XGBoost": {
+        "RMSE": 42.5595,
+        "MAE": 20.4114,
+        "R2": 0.8751,
+        "TrainTime_sec": 0.291
+      },
+      "LightGBM": {
+        "RMSE": 40.9889,
+        "MAE": 20.2186,
+        "R2": 0.8842,
+        "TrainTime_sec": 0.5682
+      },
+      "CatBoost": {
+        "RMSE": 39.6688,
+        "MAE": 19.5689,
+        "R2": 0.8915,
+        "TrainTime_sec": 1.6232
+      }
+    },
+    "tuning": {
+      "Random Forest": {
+        "n_estimators": 200,
+        "selected_via": "fixed_standard"
+      },
+      "XGBoost": {
+        "best_iteration": 79,
+        "selected_via": "val_2018_early_stopping"
+      },
+      "LightGBM": {
+        "best_iteration": 117,
+        "selected_via": "val_2018_early_stopping"
+      },
+      "CatBoost": {
+        "best_iteration": 275,
+        "selected_via": "val_2018_early_stopping"
+      }
+    }
+  },
+  "experiment_2_city_aware": {
+    "features": [
+      "City",
+      "PM2.5",
+      "PM10",
+      "NO2",
+      "NH3",
+      "SO2",
+      "CO",
+      "O3",
+      "NO"
+    ],
+    "metrics": {
+      "Random Forest": {
+        "RMSE": 41.7839,
+        "MAE": 20.6991,
+        "R2": 0.8796,
+        "TrainTime_sec": 3.6423
+      },
+      "XGBoost": {
+        "RMSE": 42.0344,
+        "MAE": 19.9653,
+        "R2": 0.8782,
+        "TrainTime_sec": 0.3108
+      },
+      "LightGBM": {
+        "RMSE": 40.555,
+        "MAE": 20.1246,
+        "R2": 0.8866,
+        "TrainTime_sec": 0.5885
+      },
+      "CatBoost": {
+        "RMSE": 39.0882,
+        "MAE": 19.7629,
+        "R2": 0.8947,
+        "TrainTime_sec": 19.9453
+      }
+    },
+    "tuning": {
+      "Random Forest": {
+        "n_estimators": 200,
+        "city_encoding": "target_encoder_cv5"
+      },
+      "XGBoost": {
+        "best_iteration": 85,
+        "city_encoding": "target_encoder_cv5"
+      },
+      "LightGBM": {
+        "best_iteration": 104,
+        "city_encoding": "native_categorical"
+      },
+      "CatBoost": {
+        "best_iteration": 215,
+        "city_encoding": "native_ordered_boosting"
+      }
+    }
+  },
+  "statistical_inference_exp1": [
+    {
+      "Comparison": "CatBoost vs Random Forest",
+      "Delta_MAE": 1.0958,
+      "95%_CI_Delta_MAE": "[0.775, 1.427]",
+      "95%_CI_Delta_RMSE": "[0.465, 4.849]",
+      "Cohen_dz": 0.0633,
+      "Paired_t_p_adj": 0.0,
+      "Wilcoxon_p_adj": 5e-06,
+      "Daily_t_p_adj": 0.0,
+      "TOST_p": 0.0,
+      "Statistically_Equivalent": true
+    },
+    {
+      "Comparison": "CatBoost vs XGBoost",
+      "Delta_MAE": 0.8425,
+      "95%_CI_Delta_MAE": "[0.562, 1.131]",
+      "95%_CI_Delta_RMSE": "[0.798, 5.005]",
+      "Cohen_dz": 0.0554,
+      "Paired_t_p_adj": 0.0,
+      "Wilcoxon_p_adj": 0.0,
+      "Daily_t_p_adj": 0.0,
+      "TOST_p": 0.0,
+      "Statistically_Equivalent": true
+    },
+    {
+      "Comparison": "CatBoost vs LightGBM",
+      "Delta_MAE": 0.6497,
+      "95%_CI_Delta_MAE": "[0.347, 0.946]",
+      "95%_CI_Delta_RMSE": "[-0.787, 3.557]",
+      "Cohen_dz": 0.04,
+      "Paired_t_p_adj": 2e-05,
+      "Wilcoxon_p_adj": 3.7e-05,
+      "Daily_t_p_adj": 1.6e-05,
+      "TOST_p": 0.0,
+      "Statistically_Equivalent": true
+    }
+  ],
+  "spatial_breakdown_exp1": {
+    "Seen Cities (18 cities)": {
+      "Random Forest": {
+        "N": 9374,
+        "RMSE": 43.4884,
+        "MAE": 20.8403,
+        "R2": 0.8824
+      },
+      "XGBoost": {
+        "N": 9374,
+        "RMSE": 44.3802,
+        "MAE": 20.5965,
+        "R2": 0.8775
+      },
+      "LightGBM": {
+        "N": 9374,
+        "RMSE": 42.4396,
+        "MAE": 20.5632,
+        "R2": 0.888
+      },
+      "CatBoost": {
+        "N": 9374,
+        "RMSE": 41.5905,
+        "MAE": 20.0702,
+        "R2": 0.8924
+      }
+    },
+    "Unseen Cities (8 cities)": {
+      "Random Forest": {
+        "N": 2036,
+        "RMSE": 35.7952,
+        "MAE": 19.856,
+        "R2": 0.7615
+      },
+      "XGBoost": {
+        "N": 2036,
+        "RMSE": 32.9015,
+        "MAE": 19.5587,
+        "R2": 0.7985
+      },
+      "LightGBM": {
+        "N": 2036,
+        "RMSE": 33.5091,
+        "MAE": 18.6317,
+        "R2": 0.791
+      },
+      "CatBoost": {
+        "N": 2036,
+        "RMSE": 29.2341,
+        "MAE": 17.2609,
+        "R2": 0.8409
+      }
+    }
+  },
+  "temporal_year_breakdown_exp1": {
+    "2019": {
+      "Random Forest": {
+        "N": 7031,
+        "RMSE": 48.9092,
+        "MAE": 22.6229,
+        "R2": 0.8704
+      },
+      "XGBoost": {
+        "N": 7031,
+        "RMSE": 49.4684,
+        "MAE": 22.1446,
+        "R2": 0.8674
+      },
+      "LightGBM": {
+        "N": 7031,
+        "RMSE": 47.7494,
+        "MAE": 22.1354,
+        "R2": 0.8765
+      },
+      "CatBoost": {
+        "N": 7031,
+        "RMSE": 45.4844,
+        "MAE": 21.458,
+        "R2": 0.8879
+      }
+    },
+    "2020": {
+      "Random Forest": {
+        "N": 4379,
+        "RMSE": 28.345,
+        "MAE": 17.5206,
+        "R2": 0.8853
+      },
+      "XGBoost": {
+        "N": 4379,
+        "RMSE": 28.1147,
+        "MAE": 17.6284,
+        "R2": 0.8872
+      },
+      "LightGBM": {
+        "N": 4379,
+        "RMSE": 26.7743,
+        "MAE": 17.1408,
+        "R2": 0.8977
+      },
+      "CatBoost": {
+        "N": 4379,
+        "RMSE": 27.9011,
+        "MAE": 16.5357,
+        "R2": 0.8889
+      }
+    }
+  },
+  "metro_cities_breakdown": {
+    "Delhi": {
+      "N": 548,
+      "RMSE": 28.25,
+      "MAE": 20.52,
+      "R2": 0.936
+    },
+    "Mumbai": {
+      "N": 548,
+      "RMSE": 15.76,
+      "MAE": 10.81,
+      "R2": 0.901
+    },
+    "Bengaluru": {
+      "N": 548,
+      "RMSE": 10.24,
+      "MAE": 7.55,
+      "R2": 0.837
+    },
+    "Hyderabad": {
+      "N": 548,
+      "RMSE": 9.61,
+      "MAE": 7.61,
+      "R2": 0.924
+    },
+    "Chennai": {
+      "N": 548,
+      "RMSE": 24.1,
+      "MAE": 16.64,
+      "R2": 0.599
+    },
+    "Kolkata": {
+      "N": 548,
+      "RMSE": 17.88,
+      "MAE": 12.96,
+      "R2": 0.966
+    }
+  },
+  "rolling_origin_rmse": {
+    "window_1_2017": 48.927597843330894,
+    "window_2_2018": 58.85905484082553,
+    "window_3_2019_2020": 39.6688
+  }
+}

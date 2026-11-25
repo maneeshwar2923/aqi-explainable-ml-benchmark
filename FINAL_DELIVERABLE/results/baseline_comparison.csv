@@ -1,0 +1,3 @@
+Baseline,Prediction_Rule,RMSE,MAE,R2
+Global Training Mean,Constant 190.01,130.3831,102.6559,-0.172
+City-Stratified Mean,City Training Mean (Fallback to Global),107.2215,78.4335,0.2074

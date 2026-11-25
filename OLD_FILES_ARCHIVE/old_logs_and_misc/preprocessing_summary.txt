@@ -1,0 +1,26 @@
+Loaded raw data: 29531 rows, 16 columns
+Cities found: 26 -> ['Ahmedabad', 'Aizawl', 'Amaravati', 'Amritsar', 'Bengaluru', 'Bhopal', 'Brajrajnagar', 'Chandigarh', 'Chennai', 'Coimbatore', 'Delhi', 'Ernakulam', 'Gurugram', 'Guwahati', 'Hyderabad', 'Jaipur', 'Jorapokhar', 'Kochi', 'Kolkata', 'Lucknow', 'Mumbai', 'Patna', 'Shillong', 'Talcher', 'Thiruvananthapuram', 'Visakhapatnam']
+Dropped 4681 rows with missing AQI target
+Dropped 226 rows missing >40% of pollutant values
+Imputed 608 missing values in PM2.5 with median=48.83
+Imputed 6952 missing values in PM10 with median=96.06
+Imputed 168 missing values in NO2 with median=22.10
+Imputed 6312 missing values in NH3 with median=16.31
+Imputed 494 missing values in SO2 with median=9.23
+Imputed 388 missing values in CO with median=0.94
+Imputed 672 missing values in O3 with median=31.24
+Imputed 162 missing values in NO with median=9.91
+Capped 514 outliers in PM2.5 (3-sigma bounds: -120.20 to 254.36) at 99th pct = 306.55
+Capped 600 outliers in PM10 (3-sigma bounds: -117.65 to 341.92) at 99th pct = 414.60
+Capped 446 outliers in NO2 (3-sigma bounds: -44.72 to 102.58) at 99th pct = 118.67
+Capped 431 outliers in NH3 (3-sigma bounds: -45.75 to 89.59) at 99th pct = 114.46
+Capped 557 outliers in SO2 (3-sigma bounds: -37.57 to 66.11) at 99th pct = 99.72
+Capped 509 outliers in CO (3-sigma bounds: -18.80 to 23.47) at 99th pct = 35.04
+Capped 335 outliers in O3 (3-sigma bounds: -29.52 to 99.15) at 99th pct = 105.19
+Capped 601 outliers in NO (3-sigma bounds: -49.50 to 84.64) at 99th pct = 114.70
+Capped 318 outliers in AQI (3-sigma bounds: -256.43 to 590.15) at 99th pct = 666.31
+Train set (2015-2018): 13214 rows
+Test set (2019-2020): 11410 rows
+
+Saved train.csv ((13214, 11)) and test.csv ((11410, 11)) to C:\Users\manee\OneDrive\Documents\CHRIST\Research\final_analysis
+Preprocessing complete.

@@ -1,0 +1,48 @@
+===========================================================================
+REVISED LEAKAGE-FREE URBAN AQI PREPROCESSING PIPELINE
+===========================================================================
+Raw source dataset: C:\Users\manee\OneDrive\Pictures\Documents\CHRIST\Research\final_analysis\city_day.csv
+Processed CSV target: C:\Users\manee\OneDrive\Pictures\Documents\CHRIST\Research\final_analysis\NEW_ANALYSIS\data_processed
+Report target: C:\Users\manee\OneDrive\Pictures\Documents\CHRIST\Research\final_analysis\NEW_ANALYSIS\reports
+
+1. Ingestion: Loaded 29531 raw records, 16 columns.
+   Total monitoring cities present in raw data: 26
+2. Target Cleaning: Dropped 4681 records with missing target AQI (Retained: 24850).
+3. Feature Cleaning: Dropped 226 rows missing >40% of criteria pollutants (Retained: 24624).
+
+4. Chronological Partitioning (2015-01-01 to 2020-07-01):
+   - Training Sub-Partition (2015-2017):   7556 rows (tuning / early stopping fold)
+   - Validation Partition   (2018):        5658 rows (validation stopping fold)
+   - Full Dev Partition     (2015-2018):  13214 rows (final model refitting fold)
+   - Out-of-Time Test       (2019-2020):  11410 rows (single-pass holdout assessment)
+
+5. Spatial Coverage Analysis:
+   - Cities active in development period (2015-2018): 18 cities
+   - Cities active in test period (2019-2020):        26 cities
+   - Unseen cities newly commissioned in test period: 8 cities (['Aizawl', 'Bhopal', 'Chandigarh', 'Coimbatore', 'Ernakulam', 'Guwahati', 'Kochi', 'Shillong'])
+   - Unseen city observations in test set: 2036 / 11410 (17.84%)
+
+6. Leakage-Free Feature Imputation (Fitted on Training Partitions Only):
+   Pollutant | TrainFull Median   | TrainSub Median   
+   ---------+--------------------+-------------------
+   PM2.5    | 57.8450            | 60.9000           
+   PM10     | 108.4100           | 107.8200          
+   NO2      | 25.3600            | 23.8350           
+   NH3      | 21.2000            | 26.3750           
+   SO2      | 8.4400             | 7.1700            
+   CO       | 1.0200             | 1.1300            
+   O3       | 31.3000            | 31.2800           
+   NO       | 10.2100            | 9.4150            
+
+7. Target AQI Integrity Check:
+   Max absolute deviation between observed and processed test AQI: 0.00000000
+   [VERIFIED] Target AQI is 100% unaltered. Zero synthetic capping applied.
+   [VERIFIED] All partitions contain zero missing (NaN) and zero infinite (Inf) values.
+
+8. Exported Processed Partitions:
+   - C:\Users\manee\OneDrive\Pictures\Documents\CHRIST\Research\final_analysis\NEW_ANALYSIS\data_processed\train_sub.csv ((7556, 12))
+   - C:\Users\manee\OneDrive\Pictures\Documents\CHRIST\Research\final_analysis\NEW_ANALYSIS\data_processed\val.csv ((5658, 12))
+   - C:\Users\manee\OneDrive\Pictures\Documents\CHRIST\Research\final_analysis\NEW_ANALYSIS\data_processed\train.csv ((13214, 12))
+   - C:\Users\manee\OneDrive\Pictures\Documents\CHRIST\Research\final_analysis\NEW_ANALYSIS\data_processed\test.csv ((11410, 12))
+   - Preprocessing report serialized to: C:\Users\manee\OneDrive\Pictures\Documents\CHRIST\Research\final_analysis\NEW_ANALYSIS\reports\preprocessing_report.json
+Preprocessing pipeline finished successfully.

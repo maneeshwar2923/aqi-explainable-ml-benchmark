@@ -1,0 +1,67 @@
+{
+  "overall_status": "PASS",
+  "passed_checks": 10,
+  "total_checks": 10,
+  "checks": [
+    {
+      "id": "QA-01",
+      "description": "Required output artifacts exist",
+      "status": "PASS",
+      "details": "All 14 artifacts verified."
+    },
+    {
+      "id": "QA-02",
+      "description": "Temporal partitions strictly disjoint (no temporal leakage)",
+      "status": "PASS",
+      "details": "TrainSub max: 2017-12-31 < Val min: 2018-01-01 | Val max: 2018-12-31 < Test min: 2019-01-01"
+    },
+    {
+      "id": "QA-03",
+      "description": "Row counts match expected chronological partitions",
+      "status": "PASS",
+      "details": "Counts: {'train_sub': 7556, 'val': 5658, 'train_full': 13214, 'test': 11410}"
+    },
+    {
+      "id": "QA-04",
+      "description": "Target AQI in test partition is 100% unaltered (zero synthetic capping)",
+      "status": "PASS",
+      "details": "Max absolute deviation from raw observed AQI: 0.00000000"
+    },
+    {
+      "id": "QA-05",
+      "description": "Post-preprocessing features contain zero missing or infinite values",
+      "status": "PASS",
+      "details": "Nulls: {'train': 0, 'val': 0, 'test': 0}, Infs: {'train': 0, 'val': 0, 'test': 0}"
+    },
+    {
+      "id": "QA-06",
+      "description": "All metrics in results_table.csv exactly match recalculated predictions",
+      "status": "PASS",
+      "details": "Perfect numerical agreement (tolerance < 1e-4)"
+    },
+    {
+      "id": "QA-07",
+      "description": "All models evaluated on identical test observations (N=11,410)",
+      "status": "PASS",
+      "details": "Confirmed all models evaluated on N=11410 test rows."
+    },
+    {
+      "id": "QA-08",
+      "description": "SHAP feature ranking aligned with finalized primary model features",
+      "status": "PASS",
+      "details": "SHAP features: ['PM2.5', 'CO', 'PM10', 'NO', 'O3', 'NO2', 'SO2', 'NH3']"
+    },
+    {
+      "id": "QA-09",
+      "description": "Cross-file metadata agreement (JSON reports and CSV tables)",
+      "status": "PASS",
+      "details": "Test sample counts verified at 11,410 across preprocessing and evaluation reports."
+    },
+    {
+      "id": "QA-10",
+      "description": "Imputation parameters strictly isolated to training partition (no test leakage)",
+      "status": "PASS",
+      "details": "Train-only medians strictly isolated from pooled 2015-2020 dataset."
+    }
+  ]
+}

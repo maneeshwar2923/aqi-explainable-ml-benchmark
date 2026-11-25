@@ -1,0 +1,4 @@
+Comparison,Delta_MAE,95%_CI_Delta_MAE,95%_CI_Delta_RMSE,Cohen_dz,Paired_t_p_adj,Wilcoxon_p_adj,Daily_t_p_adj,TOST_p,Statistically_Equivalent
+CatBoost vs Random Forest,1.0958,"[0.775, 1.427]","[0.465, 4.849]",0.0633,0.0,5e-06,0.0,0.0,True
+CatBoost vs XGBoost,0.8425,"[0.562, 1.131]","[0.798, 5.005]",0.0554,0.0,0.0,0.0,0.0,True
+CatBoost vs LightGBM,0.6497,"[0.347, 0.946]","[-0.787, 3.557]",0.04,2e-05,3.7e-05,1.6e-05,0.0,True

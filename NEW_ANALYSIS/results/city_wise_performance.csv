@@ -1,0 +1,105 @@
+City,Cohort,Model,Sample_Count,RMSE,MAE,R2
+Ahmedabad,Seen (Historical 2015-18),Random Forest,528,152.775,90.3139,0.721
+Ahmedabad,Seen (Historical 2015-18),XGBoost,528,160.5915,91.8691,0.6917
+Ahmedabad,Seen (Historical 2015-18),LightGBM,528,150.6144,92.0735,0.7289
+Ahmedabad,Seen (Historical 2015-18),CatBoost,528,146.8513,85.6542,0.7422
+Aizawl,Unseen (New 2019-20),Random Forest,111,34.2453,28.9447,-1.9674
+Aizawl,Unseen (New 2019-20),XGBoost,111,34.4494,31.6968,-2.0029
+Aizawl,Unseen (New 2019-20),LightGBM,111,28.5803,26.4396,-1.0668
+Aizawl,Unseen (New 2019-20),CatBoost,111,29.7019,26.4207,-1.2323
+Amaravati,Seen (Historical 2015-18),Random Forest,492,18.3771,14.8395,0.8801
+Amaravati,Seen (Historical 2015-18),XGBoost,492,19.8135,16.9008,0.8606
+Amaravati,Seen (Historical 2015-18),LightGBM,492,18.7307,15.7829,0.8754
+Amaravati,Seen (Historical 2015-18),CatBoost,492,18.1428,15.2577,0.8831
+Amritsar,Seen (Historical 2015-18),Random Forest,534,27.9246,18.2894,0.76
+Amritsar,Seen (Historical 2015-18),XGBoost,534,25.4797,17.7167,0.8001
+Amritsar,Seen (Historical 2015-18),LightGBM,534,26.6329,18.178,0.7817
+Amritsar,Seen (Historical 2015-18),CatBoost,534,24.1448,16.9783,0.8205
+Bengaluru,Seen (Historical 2015-18),Random Forest,548,10.276,7.6491,0.8358
+Bengaluru,Seen (Historical 2015-18),XGBoost,548,10.5197,8.2182,0.8279
+Bengaluru,Seen (Historical 2015-18),LightGBM,548,10.6322,8.1889,0.8242
+Bengaluru,Seen (Historical 2015-18),CatBoost,548,10.2441,7.5543,0.8368
+Bhopal,Unseen (New 2019-20),Random Forest,278,24.0462,18.4837,0.815
+Bhopal,Unseen (New 2019-20),XGBoost,278,20.8964,15.5765,0.8603
+Bhopal,Unseen (New 2019-20),LightGBM,278,20.9325,15.5234,0.8598
+Bhopal,Unseen (New 2019-20),CatBoost,278,21.2063,15.1507,0.8561
+Brajrajnagar,Seen (Historical 2015-18),Random Forest,388,29.238,21.1298,0.7966
+Brajrajnagar,Seen (Historical 2015-18),XGBoost,388,26.9808,19.8177,0.8268
+Brajrajnagar,Seen (Historical 2015-18),LightGBM,388,28.3497,21.4365,0.8087
+Brajrajnagar,Seen (Historical 2015-18),CatBoost,388,28.1893,21.2316,0.8109
+Chandigarh,Unseen (New 2019-20),Random Forest,299,22.1443,16.0729,0.8495
+Chandigarh,Unseen (New 2019-20),XGBoost,299,20.7228,16.1219,0.8682
+Chandigarh,Unseen (New 2019-20),LightGBM,299,20.2706,15.5429,0.8739
+Chandigarh,Unseen (New 2019-20),CatBoost,299,19.8844,14.8253,0.8787
+Chennai,Seen (Historical 2015-18),Random Forest,548,25.073,18.2659,0.5655
+Chennai,Seen (Historical 2015-18),XGBoost,548,24.29,17.4144,0.5922
+Chennai,Seen (Historical 2015-18),LightGBM,548,23.5386,16.6134,0.617
+Chennai,Seen (Historical 2015-18),CatBoost,548,24.0986,16.6388,0.5986
+Coimbatore,Unseen (New 2019-20),Random Forest,343,17.3422,14.7964,0.0756
+Coimbatore,Unseen (New 2019-20),XGBoost,343,15.964,13.5266,0.2167
+Coimbatore,Unseen (New 2019-20),LightGBM,343,15.1232,12.5069,0.297
+Coimbatore,Unseen (New 2019-20),CatBoost,343,13.1865,10.4652,0.4656
+Delhi,Seen (Historical 2015-18),Random Forest,548,27.4381,19.5007,0.9397
+Delhi,Seen (Historical 2015-18),XGBoost,548,28.2264,20.1691,0.9362
+Delhi,Seen (Historical 2015-18),LightGBM,548,28.1878,20.4786,0.9363
+Delhi,Seen (Historical 2015-18),CatBoost,548,28.2482,20.5191,0.9361
+Ernakulam,Unseen (New 2019-20),Random Forest,152,17.9418,13.0768,0.1232
+Ernakulam,Unseen (New 2019-20),XGBoost,152,12.1933,8.8776,0.595
+Ernakulam,Unseen (New 2019-20),LightGBM,152,14.6823,11.0944,0.4128
+Ernakulam,Unseen (New 2019-20),CatBoost,152,13.9374,10.9936,0.4709
+Gurugram,Seen (Historical 2015-18),Random Forest,547,30.3264,22.603,0.9059
+Gurugram,Seen (Historical 2015-18),XGBoost,547,29.2347,21.8818,0.9126
+Gurugram,Seen (Historical 2015-18),LightGBM,547,30.0751,22.3334,0.9075
+Gurugram,Seen (Historical 2015-18),CatBoost,547,30.122,22.1078,0.9072
+Guwahati,Unseen (New 2019-20),Random Forest,495,60.4745,27.6023,0.7118
+Guwahati,Unseen (New 2019-20),XGBoost,495,54.8994,28.625,0.7625
+Guwahati,Unseen (New 2019-20),LightGBM,495,57.1311,27.4499,0.7428
+Guwahati,Unseen (New 2019-20),CatBoost,495,48.4834,26.3006,0.8147
+Hyderabad,Seen (Historical 2015-18),Random Forest,548,9.3019,7.1615,0.9289
+Hyderabad,Seen (Historical 2015-18),XGBoost,548,11.3907,9.2153,0.8933
+Hyderabad,Seen (Historical 2015-18),LightGBM,548,10.2997,8.2578,0.9128
+Hyderabad,Seen (Historical 2015-18),CatBoost,548,9.6102,7.6128,0.9241
+Jaipur,Seen (Historical 2015-18),Random Forest,548,23.683,16.6769,0.6981
+Jaipur,Seen (Historical 2015-18),XGBoost,548,20.8631,14.1156,0.7657
+Jaipur,Seen (Historical 2015-18),LightGBM,548,22.5971,15.8856,0.7252
+Jaipur,Seen (Historical 2015-18),CatBoost,548,20.5563,14.0864,0.7726
+Jorapokhar,Seen (Historical 2015-18),Random Forest,462,32.6023,23.2387,0.8118
+Jorapokhar,Seen (Historical 2015-18),XGBoost,462,30.4309,20.6411,0.836
+Jorapokhar,Seen (Historical 2015-18),LightGBM,462,32.7214,23.246,0.8104
+Jorapokhar,Seen (Historical 2015-18),CatBoost,462,29.8303,21.1952,0.8424
+Kochi,Unseen (New 2019-20),Random Forest,158,29.5326,21.9519,0.2429
+Kochi,Unseen (New 2019-20),XGBoost,158,26.7465,18.7189,0.379
+Kochi,Unseen (New 2019-20),LightGBM,158,31.3211,20.9837,0.1484
+Kochi,Unseen (New 2019-20),CatBoost,158,22.6017,14.7447,0.5565
+Kolkata,Seen (Historical 2015-18),Random Forest,548,17.6763,12.5575,0.9667
+Kolkata,Seen (Historical 2015-18),XGBoost,548,18.3838,13.9827,0.964
+Kolkata,Seen (Historical 2015-18),LightGBM,548,17.7377,13.0588,0.9665
+Kolkata,Seen (Historical 2015-18),CatBoost,548,17.8819,12.9578,0.966
+Lucknow,Seen (Historical 2015-18),Random Forest,548,28.1514,21.0377,0.9166
+Lucknow,Seen (Historical 2015-18),XGBoost,548,26.9803,20.4608,0.9234
+Lucknow,Seen (Historical 2015-18),LightGBM,548,27.0942,20.3974,0.9227
+Lucknow,Seen (Historical 2015-18),CatBoost,548,27.9542,21.6306,0.9177
+Mumbai,Seen (Historical 2015-18),Random Forest,548,15.847,10.2237,0.8996
+Mumbai,Seen (Historical 2015-18),XGBoost,548,15.3399,10.7311,0.906
+Mumbai,Seen (Historical 2015-18),LightGBM,548,16.0711,10.2521,0.8968
+Mumbai,Seen (Historical 2015-18),CatBoost,548,15.7575,10.8132,0.9008
+Patna,Seen (Historical 2015-18),Random Forest,538,30.9164,22.5976,0.9169
+Patna,Seen (Historical 2015-18),XGBoost,538,30.3985,22.8191,0.9196
+Patna,Seen (Historical 2015-18),LightGBM,538,28.7391,21.2994,0.9282
+Patna,Seen (Historical 2015-18),CatBoost,538,30.5683,23.8159,0.9187
+Shillong,Unseen (New 2019-20),Random Forest,200,18.8396,15.3762,0.5684
+Shillong,Unseen (New 2019-20),XGBoost,200,23.186,20.1825,0.3463
+Shillong,Unseen (New 2019-20),LightGBM,200,18.5645,15.7863,0.5809
+Shillong,Unseen (New 2019-20),CatBoost,200,18.0871,14.7834,0.6022
+Talcher,Seen (Historical 2015-18),Random Forest,452,38.7781,25.2861,0.8433
+Talcher,Seen (Historical 2015-18),XGBoost,452,31.7407,20.5283,0.895
+Talcher,Seen (Historical 2015-18),LightGBM,452,30.6985,20.3312,0.9018
+Talcher,Seen (Historical 2015-18),CatBoost,452,32.1371,20.434,0.8924
+Thiruvananthapuram,Seen (Historical 2015-18),Random Forest,533,16.5784,11.6877,0.5586
+Thiruvananthapuram,Seen (Historical 2015-18),XGBoost,533,12.8394,10.3837,0.7353
+Thiruvananthapuram,Seen (Historical 2015-18),LightGBM,533,12.3605,9.2857,0.7547
+Thiruvananthapuram,Seen (Historical 2015-18),CatBoost,533,12.2097,9.1326,0.7606
+Visakhapatnam,Seen (Historical 2015-18),Random Forest,516,21.7113,14.5835,0.8648
+Visakhapatnam,Seen (Historical 2015-18),XGBoost,516,21.7831,15.2405,0.8639
+Visakhapatnam,Seen (Historical 2015-18),LightGBM,516,21.8608,15.1252,0.863
+Visakhapatnam,Seen (Historical 2015-18),CatBoost,516,22.2582,15.5541,0.8579
