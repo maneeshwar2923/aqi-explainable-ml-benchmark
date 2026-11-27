@@ -1,0 +1,87 @@
+Rows: {'sub': 7556, 'val': 5658, 'dev': 13214, 'test': 11410}; best ML: Random Forest [SL]; formula: {'nitrogen': 'NOx', 'w_yesterday': 0.4, 'a': 1.1140559071444085, 'b': -3.891775694011872, 'dev_MAE_unrecal': 29.15074913978817}
+                         Method     Type    MAE    RMSE    R2    Bias  BandAcc  MAE_sd  RMSE_sd  R2_sd  BandAcc_sd  fit_seconds
+        CPCB formula (same day) baseline 24.456  56.659 0.779 -14.399    0.722   0.000    0.000  0.000       0.000          NaN
+Recalibrated formula (same day) baseline 23.809  54.099 0.798  -1.352    0.754   0.000    0.000  0.000       0.000          NaN
+   Two-day recalibrated formula baseline 20.730  49.557 0.831  -3.619    0.775   0.000    0.000  0.000       0.000          NaN
+                      City-mean baseline 78.434 107.221 0.207  41.184    0.363   0.000    0.000  0.000       0.000          NaN
+              Random Forest [S]       ML 19.576  40.573 0.887   2.374    0.761   0.019    0.056  0.000       0.001        4.339
+                    XGBoost [S]       ML 19.847  40.111 0.889   1.945    0.754   0.146    0.230  0.001       0.001        0.191
+                   LightGBM [S]       ML 20.145  40.587 0.886   1.418    0.754   0.233    0.590  0.003       0.004        0.297
+                   CatBoost [S]       ML 20.672  43.111 0.872   1.284    0.744   0.080    0.439  0.003       0.004        1.213
+             Random Forest [SL]       ML 15.008  32.444 0.927   1.947    0.821   0.018    0.050  0.000       0.002       16.723
+                   XGBoost [SL]       ML 15.547  33.286 0.924   1.591    0.805   0.077    0.507  0.002       0.004        0.493
+                  LightGBM [SL]       ML 16.306  34.925 0.916   0.758    0.809   0.071    0.162  0.001       0.002        4.622
+                  CatBoost [SL]       ML 15.454  33.667 0.922  -0.052    0.811   0.035    0.361  0.002       0.002       30.303
+
+Paired dMAE, date-block bootstrap 95% CI:
+                   reference         comparison  dMAE(cmp-ref)  CI_low  CI_high
+Two-day recalibrated formula  Random Forest [S]         -1.153  -1.817   -0.516
+Two-day recalibrated formula        XGBoost [S]         -0.883  -1.515   -0.283
+Two-day recalibrated formula       LightGBM [S]         -0.585  -1.199   -0.010
+Two-day recalibrated formula       CatBoost [S]         -0.058  -0.695   +0.523
+Two-day recalibrated formula Random Forest [SL]         -5.722  -6.441   -5.056
+Two-day recalibrated formula       XGBoost [SL]         -5.183  -5.926   -4.493
+Two-day recalibrated formula      LightGBM [SL]         -4.423  -5.141   -3.762
+Two-day recalibrated formula      CatBoost [SL]         -5.275  -5.923   -4.680
+          Random Forest [SL]  Random Forest [S]         +4.568  +4.174   +4.958
+          Random Forest [SL]        XGBoost [S]         +4.839  +4.396   +5.264
+          Random Forest [SL]       LightGBM [S]         +5.137  +4.689   +5.566
+          Random Forest [SL]       CatBoost [S]         +5.664  +5.156   +6.161
+          Random Forest [SL]       XGBoost [SL]         +0.539  +0.383   +0.702
+          Random Forest [SL]      LightGBM [SL]         +1.298  +1.042   +1.564
+          Random Forest [SL]      CatBoost [SL]         +0.446  +0.101   +0.796
+           Random Forest [S] Random Forest [SL]         -4.568  -4.958   -4.174
+                 XGBoost [S]       XGBoost [SL]         -4.300  -4.725   -3.869
+                LightGBM [S]      LightGBM [SL]         -3.839  -4.278   -3.380
+                CatBoost [S]      CatBoost [SL]         -5.218  -5.596   -4.831
+
+Temporal (period-matched):
+      window  year        n  mean_AQI  MAE_ML  MAE_formula  nMAE_ML
+Jan 1-Mar 24  2019 1508.000   212.907  19.837       33.264    0.093
+Jan 1-Mar 24  2020 1986.000   149.332  13.247       19.293    0.089
+Jul 2-Dec 31  2019 3744.000   140.066  15.180       20.856    0.108
+Mar 25-Jul 1  2019 1779.000   143.690  16.900       22.263    0.118
+Mar 25-Jul 1  2020 2393.000    83.721  11.662       12.685    0.139
+
+Spatial:
+ group        n  mean_AQI  MAE_ML  MAE_formula  nMAE_ML
+  seen 9374.000   148.564  15.221       22.836    0.102
+unseen 2036.000   100.871  13.924       11.030    0.138
+
+Per band:
+        band        n  mean_AQI  MAE_ML  MAE_formula  nMAE_ML
+        Good  933.000    39.894  11.182        7.138    0.280
+Satisfactory 4500.000    76.393   8.931       10.809    0.117
+    Moderate 3939.000   134.583  12.838       16.085    0.095
+        Poor 1034.000   245.969  21.477       34.860    0.087
+   Very Poor  624.000   337.880  20.348       37.292    0.060
+      Severe  380.000   583.513  91.940      154.072    0.158
+
+Per city:
+              City       n  mean_AQI  MAE_ML  MAE_formula  nMAE_ML
+         Ahmedabad 528.000   424.924  80.294      123.380    0.189
+          Guwahati 495.000   140.111  20.636       19.349    0.147
+        Jorapokhar 462.000   153.784  20.317       19.909    0.132
+            Aizawl 111.000    34.766  17.980        2.779    0.517
+             Patna 538.000   197.710  17.081       31.895    0.086
+           Talcher 452.000   167.104  15.621       19.478    0.093
+             Kochi 158.000   104.285  15.313        7.438    0.147
+          Gurugram 547.000   182.989  14.304       23.617    0.078
+      Brajrajnagar 388.000   147.670  14.055       16.856    0.095
+           Chennai 548.000    95.365  13.475       25.344    0.141
+           Lucknow 548.000   187.389  12.668       26.294    0.068
+          Amritsar 534.000   104.139  12.560       10.718    0.121
+            Bhopal 278.000   132.827  11.868       13.364    0.089
+        Coimbatore 343.000    73.076  11.702        5.902    0.160
+          Shillong 200.000    53.815  10.782        9.366    0.200
+             Delhi 548.000   215.263  10.660       20.916    0.050
+         Amaravati 492.000    84.126  10.225       10.755    0.122
+         Ernakulam 152.000    92.599  10.174        5.451    0.110
+            Jaipur 548.000   115.372   9.637       10.938    0.084
+     Visakhapatnam 516.000   110.357   9.566       11.316    0.087
+        Chandigarh 299.000    96.498   9.045        9.880    0.094
+           Kolkata 548.000   135.022   8.343       16.033    0.062
+            Mumbai 548.000   106.487   7.999        9.442    0.075
+Thiruvananthapuram 533.000    72.951   7.590       12.463    0.104
+         Bengaluru 548.000    87.633   6.506       11.524    0.074
+         Hyderabad 548.000    88.703   4.895        8.715    0.055

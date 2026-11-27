@@ -1,0 +1,137 @@
+{
+  "rows": {
+    "sub": 7556,
+    "val": 5658,
+    "dev": 13214,
+    "test": 11410
+  },
+  "test_cities": 26,
+  "unseen_cities": [
+    "Aizawl",
+    "Bhopal",
+    "Chandigarh",
+    "Coimbatore",
+    "Ernakulam",
+    "Guwahati",
+    "Kochi",
+    "Shillong"
+  ],
+  "best_ml": "Random Forest [SL]",
+  "formula": {
+    "nitrogen": "NOx",
+    "w_yesterday": 0.4,
+    "a": 1.1140559071444085,
+    "b": -3.891775694011872,
+    "dev_MAE_unrecal": 29.15074913978817
+  },
+  "same_day_recal": [
+    1.0642747005279072,
+    4.9700396457161045
+  ],
+  "models": {
+    "Random Forest [S]": {
+      "params": {
+        "max_features": 1.0,
+        "min_samples_leaf": 5,
+        "max_depth": 12
+      },
+      "iterations": null,
+      "val_MAE": 30.452251267661655,
+      "search_seconds": 61.9699182510376
+    },
+    "XGBoost [S]": {
+      "params": {
+        "max_depth": 6,
+        "learning_rate": 0.04139112721451203,
+        "subsample": 0.8204045267796979,
+        "colsample_bytree": 0.9863500501762233,
+        "min_child_weight": 10.288837310275683,
+        "reg_lambda": 1.0023401711209265
+      },
+      "iterations": 124,
+      "val_MAE": 31.583039146550092,
+      "search_seconds": 13.221008777618408
+    },
+    "LightGBM [S]": {
+      "params": {
+        "num_leaves": 33,
+        "learning_rate": 0.06730881756399967,
+        "min_child_samples": 18,
+        "subsample": 0.7716194179753779,
+        "subsample_freq": 1,
+        "colsample_bytree": 0.740426087167457,
+        "reg_lambda": 1.7637919718001716
+      },
+      "iterations": 199,
+      "val_MAE": 31.491603937904774,
+      "search_seconds": 166.30592703819275
+    },
+    "CatBoost [S]": {
+      "params": {
+        "depth": 8,
+        "learning_rate": 0.0855266539115862,
+        "l2_leaf_reg": 3.210907009668784,
+        "random_strength": 0.2700816425631605
+      },
+      "iterations": 177,
+      "val_MAE": 31.466189062807846,
+      "search_seconds": 88.74196767807007
+    },
+    "Random Forest [SL]": {
+      "params": {
+        "max_features": 0.7,
+        "min_samples_leaf": 2,
+        "max_depth": null
+      },
+      "iterations": null,
+      "val_MAE": 25.187366086558665,
+      "search_seconds": 190.36747026443481
+    },
+    "XGBoost [SL]": {
+      "params": {
+        "max_depth": 8,
+        "learning_rate": 0.07583016626820298,
+        "subsample": 0.7605381874895726,
+        "colsample_bytree": 0.990176642083071,
+        "min_child_weight": 9.311198433334967,
+        "reg_lambda": 0.11187214852980724
+      },
+      "iterations": 85,
+      "val_MAE": 26.268066496594546,
+      "search_seconds": 66.59237027168274
+    },
+    "LightGBM [SL]": {
+      "params": {
+        "num_leaves": 160,
+        "learning_rate": 0.0291550669093486,
+        "min_child_samples": 41,
+        "subsample": 0.8990449268272764,
+        "subsample_freq": 1,
+        "colsample_bytree": 0.7557967676419646,
+        "reg_lambda": 0.4723483184317769
+      },
+      "iterations": 1043,
+      "val_MAE": 25.924206307423002,
+      "search_seconds": 92.52543187141418
+    },
+    "CatBoost [SL]": {
+      "params": {
+        "depth": 8,
+        "learning_rate": 0.012899487178221826,
+        "l2_leaf_reg": 6.878749967263371,
+        "random_strength": 0.9548233315669121
+      },
+      "iterations": 3923,
+      "val_MAE": 25.25920748593637,
+      "search_seconds": 705.8342707157135
+    }
+  },
+  "n_trials": 20,
+  "seeds": [
+    0,
+    1,
+    2,
+    3,
+    4
+  ]
+}

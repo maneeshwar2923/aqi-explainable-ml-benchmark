@@ -1,0 +1,158 @@
+complete-case rows 8003 of 10882; cities 22
+dominant analyser shares: {'PM10': 0.555, 'PM2.5': 0.265, 'CO': 0.078, 'O3': 0.056, 'NO2': 0.045, 'SO2': 0.002}
+method                  Formula+LOCF  Formula-drop  LightGBM  LightGBM-aug  LightGBM-stale  Random Forest  Random Forest-aug  Random Forest-stale
+scenario   outage_days                                                                                                                           
+none       0                   11.29         11.29     10.98         11.38           11.24          10.75              11.33                11.01
+PM2.5      1                   14.51         19.60     15.34         13.42           13.19          13.80              13.13                13.40
+           3                   23.00         19.60     18.44         17.58           18.57          18.04              16.63                19.48
+           7                   25.49         19.60     18.44         17.58           19.31          18.04              16.63                20.97
+PM10       1                   13.39         16.37     14.15         13.51           12.40          15.11              13.64                12.08
+           3                   20.18         16.37     16.27         16.37           16.09          17.16              16.92                16.26
+           7                   22.28         16.37     16.27         16.37           17.14          17.16              16.92                17.35
+CO         1                   11.45         12.28     13.02         13.27           11.43          12.05              12.36                11.20
+           3                   11.74         12.28     14.68         13.87           11.83          12.62              13.58                11.62
+           7                   11.81         12.28     14.68         13.87           11.90          12.62              13.58                11.80
+NO2        1                   11.36         11.44     10.90         11.11           11.31          10.61              11.01                11.06
+           3                   11.74         11.44     11.12         11.28           11.69          10.77              10.95                11.45
+           7                   11.93         11.44     11.12         11.28           11.78          10.77              10.95                11.59
+dominant   1                   15.35         25.94     18.62         14.52           13.38          17.08              14.10                13.37
+           3                   25.16         25.94     24.12         19.29           18.83          23.84              19.44                19.70
+           7                   27.97         25.94     24.12         19.29           19.92          23.84              19.44                21.08
+PM2.5+PM10 1                   16.68         47.73     22.01         19.38           15.64          22.41              19.10                15.67
+           3                   31.12         47.73     40.80         57.55           27.66          47.63              60.79                28.08
+           7                   35.56         47.73     40.80         57.55           30.65          47.63              60.79                31.73
+
+  scenario  outage_days              method    n    MAE  MAE_sd_seeds  dMAE_vs_ref  CI_low  CI_high best_formula  dMAE_vs_best_formula  CIb_low  CIb_high
+      none            0        Formula-drop 8003 +11.29         +0.00        +0.00   +0.00    +0.00 Formula-drop                 +0.00    +0.00     +0.00
+      none            0            LightGBM 8003 +10.98         +0.06        -0.31   -0.55    -0.06 Formula-drop                 -0.31    -0.55     -0.06
+      none            0        LightGBM-aug 8003 +11.38         +0.02        +0.10   -0.17    +0.36 Formula-drop                 +0.10    -0.17     +0.36
+      none            0      LightGBM-stale 8003 +11.24         +0.14        -0.05   -0.31    +0.21 Formula-drop                 -0.05    -0.31     +0.21
+      none            0       Random Forest 8003 +10.75         +0.02        -0.54   -0.80    -0.27 Formula-drop                 -0.54    -0.80     -0.27
+      none            0   Random Forest-aug 8003 +11.33         +0.14        +0.05   -0.23    +0.32 Formula-drop                 +0.05    -0.23     +0.32
+      none            0 Random Forest-stale 8003 +11.01         +0.02        -0.28   -0.54    -0.01 Formula-drop                 -0.28    -0.54     -0.01
+     PM2.5            1        Formula-drop 8003 +19.60         +0.00        +5.09   +4.30    +5.88 Formula+LOCF                 +5.09    +4.30     +5.88
+     PM2.5            1            LightGBM 8003 +15.34         +0.28        +0.83   +0.32    +1.38 Formula+LOCF                 +0.83    +0.32     +1.38
+     PM2.5            1        LightGBM-aug 8003 +13.42         +0.15        -1.09   -1.41    -0.78 Formula+LOCF                 -1.09    -1.41     -0.78
+     PM2.5            1      LightGBM-stale 8003 +13.19         +0.16        -1.32   -1.61    -1.02 Formula+LOCF                 -1.32    -1.61     -1.02
+     PM2.5            1       Random Forest 8003 +13.80         +0.18        -0.70   -1.11    -0.27 Formula+LOCF                 -0.70    -1.11     -0.27
+     PM2.5            1   Random Forest-aug 8003 +13.13         +0.25        -1.37   -1.69    -1.07 Formula+LOCF                 -1.37    -1.69     -1.07
+     PM2.5            1 Random Forest-stale 8003 +13.40         +0.11        -1.11   -1.40    -0.83 Formula+LOCF                 -1.11    -1.40     -0.83
+     PM2.5            3        Formula-drop 8003 +19.60         +0.00        -3.40   -4.34    -2.50 Formula-drop                 +0.00    +0.00     +0.00
+     PM2.5            3            LightGBM 8003 +18.44         +0.23        -4.56   -5.55    -3.60 Formula-drop                 -1.16    -1.40     -0.91
+     PM2.5            3        LightGBM-aug 8003 +17.58         +0.59        -5.42   -6.40    -4.52 Formula-drop                 -2.02    -2.58     -1.45
+     PM2.5            3      LightGBM-stale 8003 +18.57         +0.13        -4.43   -5.07    -3.82 Formula-drop                 -1.03    -1.75     -0.30
+     PM2.5            3       Random Forest 8003 +18.04         +0.08        -4.96   -5.95    -3.99 Formula-drop                 -1.56    -1.80     -1.31
+     PM2.5            3   Random Forest-aug 8003 +16.63         +0.52        -6.37   -7.36    -5.48 Formula-drop                 -2.97    -3.53     -2.42
+     PM2.5            3 Random Forest-stale 8003 +19.48         +0.27        -3.52   -4.05    -3.02 Formula-drop                 -0.12    -0.91     +0.64
+     PM2.5            7        Formula-drop 8003 +19.60         +0.00        -5.89   -6.89    -4.90 Formula-drop                 +0.00    +0.00     +0.00
+     PM2.5            7            LightGBM 8003 +18.44         +0.23        -7.05   -8.07    -6.04 Formula-drop                 -1.16    -1.40     -0.91
+     PM2.5            7        LightGBM-aug 8003 +17.58         +0.59        -7.91   -8.98    -6.81 Formula-drop                 -2.02    -2.58     -1.45
+     PM2.5            7      LightGBM-stale 8003 +19.31         +0.46        -6.18   -6.96    -5.36 Formula-drop                 -0.29    -0.97     +0.38
+     PM2.5            7       Random Forest 8003 +18.04         +0.08        -7.44   -8.49    -6.42 Formula-drop                 -1.56    -1.80     -1.31
+     PM2.5            7   Random Forest-aug 8003 +16.63         +0.52        -8.85   -9.94    -7.77 Formula-drop                 -2.97    -3.53     -2.42
+     PM2.5            7 Random Forest-stale 8003 +20.97         +0.78        -4.51   -5.08    -3.91 Formula-drop                 +1.37    +0.62     +2.12
+      PM10            1        Formula-drop 8003 +16.37         +0.00        +2.97   +2.49    +3.49 Formula+LOCF                 +2.97    +2.49     +3.49
+      PM10            1            LightGBM 8003 +14.15         +0.51        +0.76   +0.36    +1.16 Formula+LOCF                 +0.76    +0.36     +1.16
+      PM10            1        LightGBM-aug 8003 +13.51         +0.31        +0.12   -0.28    +0.53 Formula+LOCF                 +0.12    -0.28     +0.53
+      PM10            1      LightGBM-stale 8003 +12.40         +0.13        -0.99   -1.31    -0.66 Formula+LOCF                 -0.99    -1.31     -0.66
+      PM10            1       Random Forest 8003 +15.11         +0.19        +1.72   +1.26    +2.18 Formula+LOCF                 +1.72    +1.26     +2.18
+      PM10            1   Random Forest-aug 8003 +13.64         +0.10        +0.25   -0.14    +0.65 Formula+LOCF                 +0.25    -0.14     +0.65
+      PM10            1 Random Forest-stale 8003 +12.08         +0.05        -1.32   -1.65    -0.98 Formula+LOCF                 -1.32    -1.65     -0.98
+      PM10            3        Formula-drop 8003 +16.37         +0.00        -3.81   -4.61    -3.04 Formula-drop                 +0.00    +0.00     +0.00
+      PM10            3            LightGBM 8003 +16.27         +0.38        -3.91   -4.68    -3.17 Formula-drop                 -0.10    -0.45     +0.25
+      PM10            3        LightGBM-aug 8003 +16.37         +0.27        -3.81   -4.57    -3.07 Formula-drop                 +0.01    -0.38     +0.37
+      PM10            3      LightGBM-stale 8003 +16.09         +0.19        -4.09   -4.65    -3.57 Formula-drop                 -0.28    -0.80     +0.24
+      PM10            3       Random Forest 8003 +17.16         +0.06        -3.02   -3.84    -2.24 Formula-drop                 +0.79    +0.41     +1.16
+      PM10            3   Random Forest-aug 8003 +16.92         +0.33        -3.26   -4.05    -2.52 Formula-drop                 +0.55    +0.18     +0.93
+      PM10            3 Random Forest-stale 8003 +16.26         +0.18        -3.92   -4.50    -3.40 Formula-drop                 -0.11    -0.64     +0.41
+      PM10            7        Formula-drop 8003 +16.37         +0.00        -5.91   -6.76    -5.07 Formula-drop                 +0.00    +0.00     +0.00
+      PM10            7            LightGBM 8003 +16.27         +0.38        -6.01   -6.84    -5.21 Formula-drop                 -0.10    -0.45     +0.25
+      PM10            7        LightGBM-aug 8003 +16.37         +0.27        -5.90   -6.73    -5.12 Formula-drop                 +0.01    -0.38     +0.37
+      PM10            7      LightGBM-stale 8003 +17.14         +0.07        -5.14   -5.74    -4.57 Formula-drop                 +0.77    +0.23     +1.30
+      PM10            7       Random Forest 8003 +17.16         +0.06        -5.12   -5.97    -4.25 Formula-drop                 +0.79    +0.41     +1.16
+      PM10            7   Random Forest-aug 8003 +16.92         +0.33        -5.36   -6.20    -4.54 Formula-drop                 +0.55    +0.18     +0.93
+      PM10            7 Random Forest-stale 8003 +17.35         +0.18        -4.92   -5.55    -4.35 Formula-drop                 +0.99    +0.43     +1.53
+        CO            1        Formula-drop 8003 +12.28         +0.00        +0.83   +0.70    +0.97 Formula+LOCF                 +0.83    +0.70     +0.97
+        CO            1            LightGBM 8003 +13.02         +0.20        +1.57   +1.26    +1.89 Formula+LOCF                 +1.57    +1.26     +1.89
+        CO            1        LightGBM-aug 8003 +13.27         +0.13        +1.81   +1.53    +2.11 Formula+LOCF                 +1.81    +1.53     +2.11
+        CO            1      LightGBM-stale 8003 +11.43         +0.13        -0.02   -0.27    +0.24 Formula+LOCF                 -0.02    -0.27     +0.24
+        CO            1       Random Forest 8003 +12.05         +0.04        +0.59   +0.32    +0.88 Formula+LOCF                 +0.59    +0.32     +0.88
+        CO            1   Random Forest-aug 8003 +12.36         +0.37        +0.91   +0.64    +1.18 Formula+LOCF                 +0.91    +0.64     +1.18
+        CO            1 Random Forest-stale 8003 +11.20         +0.02        -0.25   -0.52    +0.02 Formula+LOCF                 -0.25    -0.52     +0.02
+        CO            3        Formula-drop 8003 +12.28         +0.00        +0.54   +0.41    +0.67 Formula+LOCF                 +0.54    +0.41     +0.67
+        CO            3            LightGBM 8003 +14.68         +0.35        +2.94   +2.59    +3.31 Formula+LOCF                 +2.94    +2.59     +3.31
+        CO            3        LightGBM-aug 8003 +13.87         +0.07        +2.12   +1.83    +2.43 Formula+LOCF                 +2.12    +1.83     +2.43
+        CO            3      LightGBM-stale 8003 +11.83         +0.08        +0.08   -0.17    +0.34 Formula+LOCF                 +0.08    -0.17     +0.34
+        CO            3       Random Forest 8003 +12.62         +0.05        +0.88   +0.59    +1.18 Formula+LOCF                 +0.88    +0.59     +1.18
+        CO            3   Random Forest-aug 8003 +13.58         +0.16        +1.83   +1.55    +2.13 Formula+LOCF                 +1.83    +1.55     +2.13
+        CO            3 Random Forest-stale 8003 +11.62         +0.04        -0.12   -0.39    +0.15 Formula+LOCF                 -0.12    -0.39     +0.15
+        CO            7        Formula-drop 8003 +12.28         +0.00        +0.48   +0.35    +0.60 Formula+LOCF                 +0.48    +0.35     +0.60
+        CO            7            LightGBM 8003 +14.68         +0.35        +2.88   +2.51    +3.25 Formula+LOCF                 +2.88    +2.51     +3.25
+        CO            7        LightGBM-aug 8003 +13.87         +0.07        +2.06   +1.76    +2.37 Formula+LOCF                 +2.06    +1.76     +2.37
+        CO            7      LightGBM-stale 8003 +11.90         +0.10        +0.10   -0.16    +0.35 Formula+LOCF                 +0.10    -0.16     +0.35
+        CO            7       Random Forest 8003 +12.62         +0.05        +0.82   +0.54    +1.12 Formula+LOCF                 +0.82    +0.54     +1.12
+        CO            7   Random Forest-aug 8003 +13.58         +0.16        +1.77   +1.49    +2.07 Formula+LOCF                 +1.77    +1.49     +2.07
+        CO            7 Random Forest-stale 8003 +11.80         +0.09        -0.01   -0.27    +0.26 Formula+LOCF                 -0.01    -0.27     +0.26
+       NO2            1        Formula-drop 8003 +11.44         +0.00        +0.08   +0.02    +0.15 Formula+LOCF                 +0.08    +0.02     +0.15
+       NO2            1            LightGBM 8003 +10.90         +0.05        -0.46   -0.69    -0.23 Formula+LOCF                 -0.46    -0.69     -0.23
+       NO2            1        LightGBM-aug 8003 +11.11         +0.05        -0.25   -0.51    +0.01 Formula+LOCF                 -0.25    -0.51     +0.01
+       NO2            1      LightGBM-stale 8003 +11.31         +0.14        -0.05   -0.31    +0.21 Formula+LOCF                 -0.05    -0.31     +0.21
+       NO2            1       Random Forest 8003 +10.61         +0.04        -0.75   -1.00    -0.50 Formula+LOCF                 -0.75    -1.00     -0.50
+       NO2            1   Random Forest-aug 8003 +11.01         +0.08        -0.34   -0.60    -0.08 Formula+LOCF                 -0.34    -0.60     -0.08
+       NO2            1 Random Forest-stale 8003 +11.06         +0.01        -0.30   -0.56    -0.03 Formula+LOCF                 -0.30    -0.56     -0.03
+       NO2            3        Formula-drop 8003 +11.44         +0.00        -0.29   -0.40    -0.20 Formula-drop                 +0.00    +0.00     +0.00
+       NO2            3            LightGBM 8003 +11.12         +0.17        -0.62   -0.86    -0.36 Formula-drop                 -0.32    -0.55     -0.10
+       NO2            3        LightGBM-aug 8003 +11.28         +0.04        -0.46   -0.74    -0.20 Formula-drop                 -0.17    -0.42     +0.09
+       NO2            3      LightGBM-stale 8003 +11.69         +0.13        -0.05   -0.32    +0.22 Formula-drop                 +0.25    -0.02     +0.52
+       NO2            3       Random Forest 8003 +10.77         +0.07        -0.96   -1.21    -0.71 Formula-drop                 -0.67    -0.90     -0.44
+       NO2            3   Random Forest-aug 8003 +10.95         +0.06        -0.79   -1.06    -0.52 Formula-drop                 -0.49    -0.74     -0.23
+       NO2            3 Random Forest-stale 8003 +11.45         +0.01        -0.29   -0.57    -0.01 Formula-drop                 +0.01    -0.28     +0.29
+       NO2            7        Formula-drop 8003 +11.44         +0.00        -0.49   -0.62    -0.38 Formula-drop                 +0.00    +0.00     +0.00
+       NO2            7            LightGBM 8003 +11.12         +0.17        -0.81   -1.08    -0.57 Formula-drop                 -0.32    -0.55     -0.10
+       NO2            7        LightGBM-aug 8003 +11.28         +0.04        -0.66   -0.94    -0.38 Formula-drop                 -0.17    -0.42     +0.09
+       NO2            7      LightGBM-stale 8003 +11.78         +0.18        -0.15   -0.43    +0.12 Formula-drop                 +0.34    +0.08     +0.61
+       NO2            7       Random Forest 8003 +10.77         +0.07        -1.16   -1.43    -0.91 Formula-drop                 -0.67    -0.90     -0.44
+       NO2            7   Random Forest-aug 8003 +10.95         +0.06        -0.98   -1.27    -0.70 Formula-drop                 -0.49    -0.74     -0.23
+       NO2            7 Random Forest-stale 8003 +11.59         +0.04        -0.35   -0.63    -0.06 Formula-drop                 +0.14    -0.13     +0.42
+  dominant            1        Formula-drop 8003 +25.94         +0.00       +10.59   +9.76   +11.44 Formula+LOCF                +10.59    +9.76    +11.44
+  dominant            1            LightGBM 8003 +18.62         +0.19        +3.27   +2.72    +3.85 Formula+LOCF                 +3.27    +2.72     +3.85
+  dominant            1        LightGBM-aug 8003 +14.52         +0.15        -0.83   -1.25    -0.41 Formula+LOCF                 -0.83    -1.25     -0.41
+  dominant            1      LightGBM-stale 8003 +13.38         +0.18        -1.97   -2.30    -1.64 Formula+LOCF                 -1.97    -2.30     -1.64
+  dominant            1       Random Forest 8003 +17.08         +0.09        +1.72   +1.25    +2.22 Formula+LOCF                 +1.72    +1.25     +2.22
+  dominant            1   Random Forest-aug 8003 +14.10         +0.14        -1.25   -1.67    -0.85 Formula+LOCF                 -1.25    -1.67     -0.85
+  dominant            1 Random Forest-stale 8003 +13.37         +0.07        -1.98   -2.31    -1.65 Formula+LOCF                 -1.98    -2.31     -1.65
+  dominant            3        Formula-drop 8003 +25.94         +0.00        +0.78   -0.10    +1.67 Formula+LOCF                 +0.78    -0.10     +1.67
+  dominant            3            LightGBM 8003 +24.12         +0.28        -1.04   -1.90    -0.13 Formula+LOCF                 -1.04    -1.90     -0.13
+  dominant            3        LightGBM-aug 8003 +19.29         +0.06        -5.87   -6.71    -5.02 Formula+LOCF                 -5.87    -6.71     -5.02
+  dominant            3      LightGBM-stale 8003 +18.83         +0.03        -6.34   -6.88    -5.77 Formula+LOCF                 -6.34    -6.88     -5.77
+  dominant            3       Random Forest 8003 +23.84         +0.09        -1.32   -2.18    -0.44 Formula+LOCF                 -1.32    -2.18     -0.44
+  dominant            3   Random Forest-aug 8003 +19.44         +0.19        -5.73   -6.59    -4.84 Formula+LOCF                 -5.73    -6.59     -4.84
+  dominant            3 Random Forest-stale 8003 +19.70         +0.12        -5.46   -5.93    -5.00 Formula+LOCF                 -5.46    -5.93     -5.00
+  dominant            7        Formula-drop 8003 +25.94         +0.00        -2.03   -2.97    -1.12 Formula-drop                 +0.00    +0.00     +0.00
+  dominant            7            LightGBM 8003 +24.12         +0.28        -3.85   -4.74    -2.95 Formula-drop                 -1.82    -2.18     -1.44
+  dominant            7        LightGBM-aug 8003 +19.29         +0.06        -8.68   -9.59    -7.79 Formula-drop                 -6.65    -7.23     -6.10
+  dominant            7      LightGBM-stale 8003 +19.92         +0.11        -8.05   -8.69    -7.41 Formula-drop                 -6.02    -6.70     -5.38
+  dominant            7       Random Forest 8003 +23.84         +0.09        -4.13   -5.05    -3.22 Formula-drop                 -2.10    -2.43     -1.77
+  dominant            7   Random Forest-aug 8003 +19.44         +0.19        -8.53   -9.47    -7.62 Formula-drop                 -6.51    -7.11     -5.93
+  dominant            7 Random Forest-stale 8003 +21.08         +0.23        -6.89   -7.42    -6.34 Formula-drop                 -4.86    -5.55     -4.20
+PM2.5+PM10            1        Formula-drop 8003 +47.73         +0.00       +31.05  +28.74   +33.35 Formula+LOCF                +31.05   +28.74    +33.35
+PM2.5+PM10            1            LightGBM 8003 +22.01         +0.26        +5.33   +4.62    +6.06 Formula+LOCF                 +5.33    +4.62     +6.06
+PM2.5+PM10            1        LightGBM-aug 8003 +19.38         +1.48        +2.70   +2.26    +3.12 Formula+LOCF                 +2.70    +2.26     +3.12
+PM2.5+PM10            1      LightGBM-stale 8003 +15.64         +0.13        -1.04   -1.35    -0.72 Formula+LOCF                 -1.04    -1.35     -0.72
+PM2.5+PM10            1       Random Forest 8003 +22.41         +0.40        +5.73   +5.14    +6.31 Formula+LOCF                 +5.73    +5.14     +6.31
+PM2.5+PM10            1   Random Forest-aug 8003 +19.10         +0.53        +2.42   +1.98    +2.85 Formula+LOCF                 +2.42    +1.98     +2.85
+PM2.5+PM10            1 Random Forest-stale 8003 +15.67         +0.06        -1.01   -1.33    -0.68 Formula+LOCF                 -1.01    -1.33     -0.68
+PM2.5+PM10            3        Formula-drop 8003 +47.73         +0.00       +16.61  +14.65   +18.66 Formula+LOCF                +16.61   +14.65    +18.66
+PM2.5+PM10            3            LightGBM 8003 +40.80         +0.61        +9.68   +8.26   +11.17 Formula+LOCF                 +9.68    +8.26    +11.17
+PM2.5+PM10            3        LightGBM-aug 8003 +57.55         +3.56       +26.43  +24.80   +28.04 Formula+LOCF                +26.43   +24.80    +28.04
+PM2.5+PM10            3      LightGBM-stale 8003 +27.66         +0.05        -3.46   -3.94    -3.02 Formula+LOCF                 -3.46    -3.94     -3.02
+PM2.5+PM10            3       Random Forest 8003 +47.63         +0.26       +16.51  +15.04   +18.03 Formula+LOCF                +16.51   +15.04    +18.03
+PM2.5+PM10            3   Random Forest-aug 8003 +60.79         +2.67       +29.67  +27.92   +31.42 Formula+LOCF                +29.67   +27.92    +31.42
+PM2.5+PM10            3 Random Forest-stale 8003 +28.08         +0.09        -3.04   -3.48    -2.64 Formula+LOCF                 -3.04    -3.48     -2.64
+PM2.5+PM10            7        Formula-drop 8003 +47.73         +0.00       +12.17  +10.35   +14.03 Formula+LOCF                +12.17   +10.35    +14.03
+PM2.5+PM10            7            LightGBM 8003 +40.80         +0.61        +5.24   +3.76    +6.68 Formula+LOCF                 +5.24    +3.76     +6.68
+PM2.5+PM10            7        LightGBM-aug 8003 +57.55         +3.56       +21.99  +20.16   +23.80 Formula+LOCF                +21.99   +20.16    +23.80
+PM2.5+PM10            7      LightGBM-stale 8003 +30.65         +0.63        -4.91   -5.46    -4.37 Formula+LOCF                 -4.91    -5.46     -4.37
+PM2.5+PM10            7       Random Forest 8003 +47.63         +0.26       +12.07  +10.47   +13.57 Formula+LOCF                +12.07   +10.47    +13.57
+PM2.5+PM10            7   Random Forest-aug 8003 +60.79         +2.67       +25.23  +23.25   +27.22 Formula+LOCF                +25.23   +23.25    +27.22
+PM2.5+PM10            7 Random Forest-stale 8003 +31.73         +0.54        -3.83   -4.30    -3.38 Formula+LOCF                 -3.83    -4.30     -3.38

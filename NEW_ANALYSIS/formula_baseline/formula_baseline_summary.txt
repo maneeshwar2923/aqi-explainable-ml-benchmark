@@ -1,0 +1,60 @@
+==============================================================================
+CPCB FORMULA BASELINE vs ML (out-of-time test, 2019-01-01 .. 2020-07-01)
+==============================================================================
+Test rows: 11410 | formula-valid (>=3 pollutants incl. PM): 11410 (100.0%) | NOx-variant valid: 11410
+Inputs are DAILY MEANS. CPCB uses 8-h max for CO/O3 and 24-h rolling means; exact match is not expected.
+
+                                  Method  RMSE_all  MAE_all  R2_all  Bias_all  RMSE_exAhmedabad  MAE_exAhmedabad  R2_exAhmedabad  Bias_exAhmedabad  Within_1pt  Within_5pct
+                         F1 CPCB formula    56.659   24.456   0.779   -14.399            27.822           18.327           0.890            -8.066       0.040        0.223
+       F2 CPCB formula, NOx for nitrogen    56.480   24.006   0.780   -13.958            27.403           17.848           0.893            -7.596       0.047        0.234
+F3 CPCB formula on median-imputed inputs    56.552   24.302   0.780   -12.445            27.601           18.172           0.891            -6.031       0.040        0.227
+     F4 Linear regression on sub-indices    43.349   23.289   0.870    -1.725            28.502           19.664           0.884            -1.760       0.034        0.190
+     F5 Affine-recalibrated CPCB formula    54.099   23.809   0.798    -1.352            29.393           18.652           0.877             4.499       0.041        0.208
+F6 CPCB formula on today/yesterday blend    53.300   20.362   0.804   -14.485            21.034           14.150           0.937            -8.267       0.056        0.300
+                           Random Forest    42.218   20.665   0.877     3.662            27.137           17.285           0.895             4.355       0.047        0.247
+                                 XGBoost    42.559   20.411   0.875     2.623            25.453           16.944           0.908             3.764       0.039        0.236
+                                LightGBM    40.989   20.219   0.884     2.271            25.709           16.732           0.906             2.902       0.044        0.243
+                                CatBoost    39.669   19.569   0.892     0.500            24.568           16.362           0.914             2.000       0.044        0.252
+
+Paired differences vs CatBoost (positive = worse than CatBoost), date-block bootstrap 95% CI:
+                                             Comparison  dMAE  dMAE_CI_low  dMAE_CI_high  dRMSE  dRMSE_CI_low  dRMSE_CI_high
+                         F1 CPCB formula minus CatBoost 4.887        4.349         5.436 16.990        13.013         20.462
+       F2 CPCB formula, NOx for nitrogen minus CatBoost 4.437        3.898         5.006 16.811        12.840         20.298
+F3 CPCB formula on median-imputed inputs minus CatBoost 4.733        4.206         5.262 16.883        12.922         20.382
+     F4 Linear regression on sub-indices minus CatBoost 3.720        3.362         4.111  3.680         1.618          5.640
+     F5 Affine-recalibrated CPCB formula minus CatBoost 4.240        3.637         4.872 14.430        10.809         17.784
+F6 CPCB formula on today/yesterday blend minus CatBoost 0.793        0.193         1.372 13.631         9.174         17.678
+                           Random Forest minus CatBoost 1.096        0.760         1.412  2.550         0.467          4.667
+                                 XGBoost minus CatBoost 0.842        0.535         1.136  2.891         0.800          4.801
+                                LightGBM minus CatBoost 0.650        0.352         0.943  1.320        -0.834          3.328
+
+Dominant pollutant frequency (formula-valid test rows):
+Dominant_pollutant  Share_of_valid_test_rows
+              PM10                     0.471
+             PM2.5                     0.314
+                CO                     0.144
+                O3                     0.051
+               NO2                     0.015
+               SO2                     0.005
+               NH3                     0.000
+
+Per-city formula error (worst 10):
+      City      n  mean_AQI  F1_MAE  F1_bias  CatBoost_MAE  share_CO_dominant  max_AQI  share_CO_equals_NO_raw
+ Ahmedabad 528.00    424.92  150.78  -144.92         85.65               0.80  1719.00                    0.85
+     Patna 538.00    197.71   31.27   -20.26         23.82               0.07   568.00                    0.00
+   Chennai 548.00     95.36   30.02   -15.59         16.64               0.10   306.00                    0.00
+  Gurugram 547.00    182.99   25.19    -3.10         22.11               0.02   607.00                    0.00
+   Lucknow 548.00    187.39   24.54    -3.82         21.63               0.10   457.00                    0.00
+  Guwahati 495.00    140.11   24.54    -2.90         26.30               0.01   956.00                    0.00
+     Delhi 548.00    215.26   23.91    -9.99         20.52               0.01   659.00                    0.00
+     Kochi 158.00    104.28   22.92   -20.25         14.74               0.58   277.00                    0.00
+Jorapokhar 462.00    153.78   22.18    -9.62         21.20               0.20   604.00                    0.00
+   Talcher 452.00    167.10   20.50    -4.84         20.43               0.30   570.00                    0.00
+
+F4 coefficients (fit on 2015-2018):
+PM2.5=0.104, PM10=-0.008, NO2=0.358, SO2=0.693, NH3=0.049, CO=0.552, O3=0.207, SI_max=0.690, miss_PM2.5=17.864, miss_PM10=2.176, miss_NO2=-1.757, miss_SO2=25.192, miss_NH3=7.809, miss_CO=37.793, miss_O3=-8.018, const=-21.898
+F5 calibration (fit on 2015-2018): AQI = 1.0643 * F1 + 4.970
+F5 sensitivity: refit excluding Ahmedabad from dev -> AQI = 0.8946 * F1 + 24.446; ex-Ahmedabad test RMSE=25.394 MAE=16.959 bias=3.925
+F6 blend weight on yesterday chosen on 2015-2018 (ex-Ahmedabad dev MAE): w = 0.40 (dev MAE 20.816; w=0 gives 26.052)
+Data-integrity check: raw rows with CO == NO exactly -> Ahmedabad 65.6%, all other cities 0.02% (CO column appears duplicated from NO).
+Ahmedabad share of test rows: 4.6% | share of CatBoost squared error: 63.4%

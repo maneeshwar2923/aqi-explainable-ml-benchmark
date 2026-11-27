@@ -42,3 +42,7 @@ Thumbs.db
 # Environment variables
 .env*.local
 .env
+.venv/
+
+# Regenerable CatBoost model binaries (rebuilt by NEW_ANALYSIS/scripts/08_revised_benchmark.py)
+*.cbm
